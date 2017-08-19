@@ -5,9 +5,17 @@ import {
   Text,
   View
 } from 'react-native';
+import GlobalFont from 'react-native-global-font'
 import { Header, Footer } from './src/components/common';
 
 export default class frontend extends Component {
+
+  componentWillMount() {
+     let renogare = 'Renogare'
+     GlobalFont.applyGlobal(renogare)
+  }
+
+
   render() {
     return (
       <View style={{ flex: 1 }}>
