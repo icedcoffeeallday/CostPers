@@ -5,8 +5,7 @@ import {
   Text,
   View
 } from 'react-native';
-import Header from './src/components/Header'
-import Footer from './src/components/Footer'
+import { Header, Footer } from './src/components/common';
 
 export default class frontend extends Component {
   render() {
