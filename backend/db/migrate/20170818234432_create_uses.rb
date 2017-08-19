@@ -5,6 +5,5 @@ class CreateUses < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :uses, :item, unique: true
   end
 end
