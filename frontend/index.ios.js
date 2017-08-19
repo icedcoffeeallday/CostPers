@@ -6,12 +6,15 @@ import {
   View
 } from 'react-native';
 import Header from './src/components/Header'
+import Footer from './src/components/Footer'
 
 export default class frontend extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
         <Header />
+        <Text>App body</Text>
+        <Footer />
       </View>
     );
   }

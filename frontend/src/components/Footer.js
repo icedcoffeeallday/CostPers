@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const Header = (props) => {
+const Footer = (props) => {
   const { textStyle, viewStyle } = styles;
   return (
     <View style={viewStyle}>
@@ -16,11 +16,11 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,
-    paddingTop: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    elevation: 2,
+    paddingBottom: 15,
+    // shadowColor: '#000',
+    // shadowOffset: { width: 0, height: 1 },
+    // shadowOpacity: 0.1,
+    // elevation: 2,
     position: 'relative'
   },
     textStyle: {
@@ -29,4 +29,4 @@ const styles = {
     }
 };
 
-export default Header;
+export default Footer;
