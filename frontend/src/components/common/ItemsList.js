@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import Item from './Item';
+import Item from './item';
 import axios from 'axios';
 
 
@@ -18,10 +18,11 @@ class ItemsList extends Component {
   }
 
   componentWillMount() {
+    //need routes on backend
     var myItem = this
     axios.get('http://localhost:3000/items')
       .then(function(response) {
-    
+
         myItem.setState({data: response.data})
       })
       .catch(function(error) {
