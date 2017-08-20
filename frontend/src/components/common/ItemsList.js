@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { View, Text } from 'react-native';
 import Item from './item';
+=======
+import { View, Text, ScrollView } from 'react-native';
+>>>>>>> 77c3d5d311214923b27d53e0ed6ceb621c298577
 import axios from 'axios';
+import Item from './Item';
+import Costper from './Costper';
+import ContainerSection from '../ContainerSection';
 
 
 class ItemsList extends Component {
@@ -33,23 +40,25 @@ class ItemsList extends Component {
 
     render() {
       return (
-        <View>
+        <ScrollView>
+          <ContainerSection>
 
-          {this.state.data.map((item) => {
-            return(
+            <View style={styles.contentcolumns} >
 
-              <Item key={item.id}
-                name={item.name}
-                price={item.price}
-                img_url={item.img_url}
-                star={item.star}
-                user_id={item.user_id}
-                category_id={item.category_id}
-
-              />
-            )})}
-
-        </View>
+            {this.state.data.map((item) => {
+              return(
+                <Item key={item.id}
+                  name={item.name}
+                  price={item.price}
+                  img_url={item.img_url}
+                  star={item.star}
+                  user_id={item.user_id}
+                  category_id={item.category_id}
+                />
+              )})}
+          </View>
+          </ContainerSection>
+      </ScrollView>
       );
     }
 }
@@ -58,5 +67,11 @@ const styles = ({
   container: {
     flex: 1,
   },
+
+  contentcolumns: {
+    flex: 1,
+    flexDirection: 'column'
+  }
+
 });
 export { ItemsList };

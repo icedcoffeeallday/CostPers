@@ -1,11 +1,14 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import firebase from 'firebase';
 import BottomNavigation, { Tab } from 'react-native-material-bottom-navigation';
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Button } from './';
 
 const Footer = (props) => {
   const { textStyle, viewStyle } = styles;
   return (
+    <View>
     <BottomNavigation
       labelColor="white"
       rippleColor="white"
@@ -28,6 +31,12 @@ const Footer = (props) => {
           icon={<Icon size={24} color="white" name="exit-to-app" />}
         />
     </BottomNavigation>
+
+          <Button onPress={() => firebase.auth().signOut()}>
+            Log Out
+          </Button>
+  </View>
+
     );
 };
 
