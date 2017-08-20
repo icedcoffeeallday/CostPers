@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { View, Text } from 'react-native';
-import Item from './item';
-=======
 import { View, Text, ScrollView } from 'react-native';
->>>>>>> 77c3d5d311214923b27d53e0ed6ceb621c298577
 import axios from 'axios';
-import Item from './Item';
+import Item from './item';
 import Costper from './Costper';
 import ContainerSection from '../ContainerSection';
 
@@ -25,7 +20,6 @@ class ItemsList extends Component {
   }
 
   componentWillMount() {
-    //need routes on backend
     var myItem = this
     axios.get('http://localhost:3000/items')
       .then(function(response) {

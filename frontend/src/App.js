@@ -7,11 +7,11 @@ import {
 } from 'react-native';
 import firebase from 'firebase';
 import GlobalFont from 'react-native-global-font';
-import { Header, Footer, ItemsList, Spinner } from './src/components/common';
-import LoginForm from './src/components/LoginForm';
+import { Header, Footer, ItemsList, Spinner } from './components/common';
+import LoginForm from './components/LoginForm';
 
 
-class CostPers extends Component {
+class App extends Component {
   state = { loggedIn: null };
 
   componentWillMount() {
@@ -46,3 +46,5 @@ class CostPers extends Component {
     );
   }
 }
+
+export default App;
