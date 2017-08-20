@@ -20,7 +20,8 @@ const styles = ({
   container: {
     flex:1,
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    height: 50
   },
   costperStyle: {
     alignItems: 'flex-end'
