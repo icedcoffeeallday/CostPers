@@ -1,22 +1,19 @@
-/* @flow weak */
+import React, { Component } from 'react';
+import { View,Text } from 'react-native';
 
-import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
+class Item extends Component {
+  render(){
+    return(
+      <Text>{this.props.name}</Text>
+    )
+  }
+}
 
-const MyComponent = ({}) => (
-  <View style={styles.container}>
-    <Text>I'm MyComponent</Text>
-  </View>
-);
-
-export default MyComponent;
-
-const styles = StyleSheet.create({
+const styles = ({
   container: {
     flex: 1,
   },
 });
+
+
+export default Item;
