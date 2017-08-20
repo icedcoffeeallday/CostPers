@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -11,25 +5,30 @@ import {
   Text,
   View
 } from 'react-native';
+import GlobalFont from 'react-native-global-font';
+import { Header, Footer, ItemsList } from './src/components/common';
 
-export default class frontend extends Component {
+
+export default class CostPers extends Component {
+
+  componentWillMount() {
+     let renogare = 'Renogare'
+     GlobalFont.applyGlobal(renogare)
+  }
+
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View style={{ flex: 1 }}>
+        <Header />
+        <ItemsList />
+        <Footer />
       </View>
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -50,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('frontend', () => frontend);
+AppRegistry.registerComponent('frontend', () => CostPers);
