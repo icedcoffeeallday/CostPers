@@ -8,7 +8,7 @@ class Costper extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>costper</Text>
+        <Text>{2+3}</Text>
       </View>
     );
   }
