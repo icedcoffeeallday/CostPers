@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 import GlobalFont from 'react-native-global-font';
 import { Header, Footer } from './src/components/common';
+import Router from './src/Router';
+
 
 
 export default class CostPers extends Component {

@@ -16,17 +16,17 @@ const Footer = (props) => {
           barBackgroundColor="#16795B"
           label="Home"
           icon={<Icon size={24} color="white" name="home" />}
-          />
-          <Tab
-            barBackgroundColor="#16795B"
-            label="Add An Item"
-            icon={<Icon size={24} color="white" name="add-circle" />}
-          />
-          <Tab
-            barBackgroundColor="#16795B"
-            label="Logout"
-            icon={<Icon size={24} color="white" name="exit-to-app" />}
-          />
+        />
+        <Tab
+          barBackgroundColor="#16795B"
+          label="Add An Item"
+          icon={<Icon size={24} color="white" name="add-circle" />}
+        />
+        <Tab
+          barBackgroundColor="#16795B"
+          label="Logout"
+          icon={<Icon size={24} color="white" name="exit-to-app" />}
+        />
     </BottomNavigation>
     );
 };
