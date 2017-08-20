@@ -10,20 +10,20 @@ const Footer = (props) => {
       labelColor="white"
       rippleColor="white"
       style={{ height: 56, elevation: 8, position: 'absolute', left: 0, bottom: 0, right: 0}}
-      onTabChange={(newTabIndex) => alert(`New Tab at position ${newTabIndex}`)}
+      // onTabChange={(newTabIndex) => alert(`New Tab at position ${newTabIndex}`)}
       >
         <Tab
-          barBackgroundColor="#37474F"
+          barBackgroundColor="#16795B"
           label="Home"
           icon={<Icon size={24} color="white" name="home" />}
           />
           <Tab
-            barBackgroundColor="#37474F"
+            barBackgroundColor="#16795B"
             label="Add An Item"
             icon={<Icon size={24} color="white" name="add-circle" />}
           />
           <Tab
-            barBackgroundColor="#37474F"
+            barBackgroundColor="#16795B"
             label="Logout"
             icon={<Icon size={24} color="white" name="exit-to-app" />}
           />

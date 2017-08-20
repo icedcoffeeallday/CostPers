@@ -8,7 +8,8 @@ import {
 import GlobalFont from 'react-native-global-font';
 import { Header, Footer } from './src/components/common';
 
-export default class frontend extends Component {
+
+export default class CostPers extends Component {
 
   componentWillMount() {
      let renogare = 'Renogare'
@@ -48,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('frontend', () => frontend);
+AppRegistry.registerComponent('frontend', () => CostPers);
