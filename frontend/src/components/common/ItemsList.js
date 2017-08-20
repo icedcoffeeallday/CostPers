@@ -3,8 +3,9 @@ import { View, Text } from 'react-native';
 import axios from 'axios';
 import Item from './Item';
 import Costper from './Costper';
-import Container from '../Container'
-import ContainerSection from '../ContainerSection'
+import Container from '../Container';
+import ContainerSection from '../ContainerSection';
+
 
 class ItemsList extends Component {
   constructor(){

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View,Text } from 'react-native';
 import Costper from './Costper';
+import UseButton from './UseButton';
 
 class Item extends Component {
   render(){
@@ -9,7 +10,7 @@ class Item extends Component {
 
         <Text>{this.props.name}</Text>
         <View style={styles.costperStyle}><Costper /></View>
-
+        <UseButton />
       </View>
     )
   }
