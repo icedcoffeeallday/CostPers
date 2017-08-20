@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
 import { View,Text } from 'react-native';
+import Costper from './Costper';
 
 class Item extends Component {
   render(){
     return(
-      <Text>{this.props.name}</Text>
+      <View style={styles.container}>
+
+        <Text>{this.props.name}</Text>
+        <View style={styles.costperStyle}><Costper /></View>
+
+      </View>
     )
   }
 }
 
 const styles = ({
   container: {
-    flex: 1,
+    flex:1,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   },
+  costperStyle: {
+    alignItems: 'flex-end'
+  }
 });
 
 

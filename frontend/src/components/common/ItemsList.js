@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import Item from './Item';
 import axios from 'axios';
-
+import Item from './Item';
+import Costper from './Costper';
+import Container from '../Container'
+import ContainerSection from '../ContainerSection'
 
 class ItemsList extends Component {
   constructor(){
@@ -32,23 +34,25 @@ class ItemsList extends Component {
 
     render() {
       return (
-        <View>
+        <Container>
+          <ContainerSection>
 
-          {this.state.data.map((item) => {
-            return(
+            <View style={styles.contentcolumns} >
 
-              <Item key={item.id}
-                name={item.name}
-                price={item.price}
-                img_url={item.img_url}
-                star={item.star}
-                user_id={item.user_id}
-                category_id={item.category_id}
-
-              />
-            )})}
-
-        </View>
+            {this.state.data.map((item) => {
+              return(
+                <Item key={item.id}
+                  name={item.name}
+                  price={item.price}
+                  img_url={item.img_url}
+                  star={item.star}
+                  user_id={item.user_id}
+                  category_id={item.category_id}
+                />
+              )})}
+          </View>
+          </ContainerSection>
+      </Container>
       );
     }
 }
@@ -57,5 +61,11 @@ const styles = ({
   container: {
     flex: 1,
   },
+
+  contentcolumns: {
+    flex: 1,
+    flexDirection: 'column'
+  }
+
 });
 export { ItemsList };
