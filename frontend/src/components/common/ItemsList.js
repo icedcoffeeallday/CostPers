@@ -21,7 +21,7 @@ class ItemsList extends Component {
     var myItem = this
     axios.get('http://localhost:3000/items')
       .then(function(response) {
-    
+
         myItem.setState({data: response.data})
       })
       .catch(function(error) {

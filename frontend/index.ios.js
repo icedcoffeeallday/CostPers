@@ -6,7 +6,7 @@ import {
   View
 } from 'react-native';
 import GlobalFont from 'react-native-global-font';
-import { Header, Footer } from './src/components/common';
+import { Header, Footer, ItemsList } from './src/components/common';
 
 
 export default class CostPers extends Component {
@@ -21,7 +21,7 @@ export default class CostPers extends Component {
     return (
       <View style={{ flex: 1 }}>
         <Header />
-        <Text>App body</Text>
+        <ItemsList />
         <Footer />
       </View>
     );
