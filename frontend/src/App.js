@@ -3,18 +3,25 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 import firebase from 'firebase';
 import GlobalFont from 'react-native-global-font';
 import { Header, Footer, ItemsList, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
-import { Scene, Router, Actions } from 'react-native-router-flux';
+import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
+import AddItem from './components/AddItem';
+import MainNavBar from './components/MainNavBar';
 
 
 class App extends Component {
 
   state = { loggedIn: null };
+
+  static renderRightButton(props) {
+    return <Text>Right Button</Text>;
+  }
 
   componentWillMount() {
      let renogare = 'Renogare';
@@ -40,13 +47,35 @@ class App extends Component {
 
   render() {
     return (
-      <Router sceneStyle={{ paddingTop: 65 }}>
+      <Router
+        NavBar={MainNavBar}
+        sceneStyle={{ paddingTop: 65 }}
+        onRight={() => console.log('hi')}
+        rightButtonImage={source={uri: 'https://facebook.github.io/react/img/logo_og.png' }}
+        rightTitle="Add Item"
+      >
         <Scene key="root">
-        <Scene key="login" component={LoginForm} title="CostPers"/>
-        <Scene key="itemslist" component={ItemsList} title="CostPers" initial/>
+          <Scene key="login" component={LoginForm} title="CostPers" />
+          <Scene
+            key="itemslist"
+            component={ItemsList}
+            navigationBarStyle={styles.navBar}
+
+            initial />
+          {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
         </Scene>
       </Router>
     );
+  }
+}
+
+const styles = {
+  navBar: {
+    backgroundColor: '#F0F0F0'
+  },
+  image: {
+    width: 50,
+    height: 50
   }
 }
 

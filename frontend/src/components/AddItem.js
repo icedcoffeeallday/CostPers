@@ -5,7 +5,7 @@ class AddItem extends Component {
   render() {
     return (
       <View>
-        <Text>Hello world!</Text>
+        <Text onPress={() => Actions.pop()}>Hello world!</Text>
       </View>
     );
   }
