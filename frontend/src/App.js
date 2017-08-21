@@ -57,6 +57,7 @@ class App extends Component {
           <Scene key="login" component={LoginForm} title="CostPers" />
           <Scene
             key="itemsList"
+            title="CostPers"
             component={ItemsList}
             navigationBarStyle={styles.navBar}
             onRight={() => Actions.addItem()}

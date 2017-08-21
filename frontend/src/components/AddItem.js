@@ -45,7 +45,7 @@ class AddItem extends Component {
                 () =>this.insertItem(this.state.name, this.state.price)
               }
         >
-        Add Item! </Text>
+        Add It! </Text>
         </TouchableOpacity>
       </View>
     );
