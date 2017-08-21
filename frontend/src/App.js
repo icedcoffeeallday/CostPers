@@ -48,7 +48,7 @@ class App extends Component {
           <Scene key="main" component={Main} title="test" />
           <Scene key="login" component={LoginForm} title="CostPers"/>
           <Scene key="itemsList" component={ItemsList} title="CostPers" />
-          <Scene key="addItem" component={AddItem} title="Add Item"/>
+          <Scene key="addItem" component={AddItem} title="Add An Item"/>
         </Scene>
       </Router>
     );
