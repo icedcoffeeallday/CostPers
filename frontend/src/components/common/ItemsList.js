@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import axios from 'axios';
-import Item from './item';
+import Item from './Item';
 import Costper from './Costper';
 import ContainerSection from '../ContainerSection';
 
@@ -23,7 +23,6 @@ class ItemsList extends Component {
     var myItem = this
     axios.get('http://localhost:3000/items')
       .then(function(response) {
-
         myItem.setState({data: response.data})
       })
       .catch(function(error) {

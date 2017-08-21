@@ -20,4 +20,4 @@ const styles = ({
   },
 });
 
-export {Costper};
+export default Costper;
