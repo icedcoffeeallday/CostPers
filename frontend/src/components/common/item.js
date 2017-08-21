@@ -7,7 +7,6 @@ class Item extends Component {
   render(){
     return(
       <View style={styles.container}>
-
         <Text>{this.props.name}</Text>
         <View style={styles.costperStyle}><Costper /></View>
         <UseButton />
