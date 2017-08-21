@@ -1,46 +1,53 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import axios from 'axios';
-import Item from './item';
+import { Item } from './';
 import Costper from './Costper';
 import ContainerSection from '../ContainerSection';
+import LoginForm from '../LoginForm';
 
 
 class ItemsList extends Component {
-  constructor(){
-    super()
-    this.state = {data: [],
-                  name: "",
-                  price: "",
-                  img_url: "",
-                  star: "",
-                  user_id: "",
-                  category_id: ""
-                  }
+  constructor(props) {
+    super(props);
+    this.state = { data: [],
+                   name: '',
+                   price: '',
+                   img_url: '',
+                   star: '',
+                   user_id: '',
+                   category_id: ''
+                 };
   }
 
   componentWillMount() {
-    var myItem = this
+    var myItem = this;
     axios.get('http://localhost:3000/items')
       .then(function(response) {
 
-        myItem.setState({data: response.data})
+        myItem.setState({ data: response.data})
       })
       .catch(function(error) {
         console.log(error)
-      })
+      });
     }
 
 
     render() {
+      console.log('***************');
+      console.log('Props are:' + this.props.userId);
       return (
+
         <ScrollView>
+
           <ContainerSection>
 
             <View style={styles.contentcolumns} >
+              <Text>Hello world</Text>
+              <Text>{this.props.userId}</Text>
 
             {this.state.data.map((item) => {
-              return(
+              return (
                 <Item key={item.id}
                   name={item.name}
                   price={item.price}
@@ -49,7 +56,8 @@ class ItemsList extends Component {
                   user_id={item.user_id}
                   category_id={item.category_id}
                 />
-              )})}
+               )}
+            ) }
           </View>
           </ContainerSection>
       </ScrollView>

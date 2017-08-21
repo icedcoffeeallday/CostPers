@@ -1,58 +1,71 @@
 import React, { Component } from 'react';
-import { AsyncStorage, Text } from 'react-native';
+import { AsyncStorage, Text, Linking } from 'react-native';
 import firebase from 'firebase';
-import { Button, Card, CardSection, InputField, Spinner } from './common';
+import axios from 'axios';
+import { Button, Card, CardSection, InputField, Spinner, ItemsList, Header } from './common';
+import { Actions } from 'react-native-router-flux';
 
 class LoginForm extends Component {
-  state = { email: '', password: '', error: '', loading: false };
 
-  onButtonPress() {
-    const { email, password } = this.state;
-    this.setState({ error: '', loading: true });
-
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(this.onLoginSuccess.bind(this))
-      .catch(() => {
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(this.onLoginSuccess.bind(this))
-        .catch(this.onLoginFail.bind(this));
-      });
-  }
-
-  onLoginFail() {
-    this.setState({ error: 'Authentication Failed.', loading: false })
-  }
-
-  onLoginSuccess() {
-    axios.post('localhost:3000/login', {
-      params: {
-        email: this.state.email,
-        password: this.state.password
-      }
-    })
-    .then((response) => {
-      var userId = 'USER' + response.data.user_id;
-      AsyncStorage.setItem(userId, JSON.stringify(response.data));
-      console.log(AsyncStorage.getItem(userId));
-    })
-    .catch(() => {
-      console.log('Error');
-    });
-
-    this.setState({
+  constructor() {
+    super();
+    this.state = {
       email: '',
-      password: '',
-      loading: false,
-      error: ''
-    });
+      password: ''
+    };
+
+    this.loginUser = this.loginUser.bind(this);
   }
+
+  loginUser() {
+    this.props.authentication(this.state.email, this.state.password);
+  }
+  // state = {
+  //   email: '',
+  //   password: '',
+  //   error: '',
+  //   loading: false,
+  //   userId: '',
+  //   firstName: '',
+  //   lastName: '',
+  //   auth: false,
+  // };
+
+  // onButtonPress() {
+  //   const { email, password } = this.state;
+  //   this.setState({ error: '', loading: true });
+  //   console.log(email);
+  //
+  //   axios.post('http://localhost:3000/login', {
+  //       email: email,
+  //       password: password
+  //   })
+  //   .then(response => this.setState(
+  //     { userId: response.data.user_id,
+  //       firstName: response.data.first_name,
+  //       lastName: response.data.last_name,
+  //       loading: false,
+  //       auth: true
+  //     },
+  //
+  //     Actions.itemslist(
+  //       {userId: this.state.userId,
+  //       auth: this.state.auth}
+  //     )
+  //   ))
+  //   .catch(() => this.setState(
+  //     { error: 'Login failed, please try again.',
+  //      loading: false
+  //   }
+  //   ));
+  // }
 
   renderButton() {
     if (this.state.loading) {
       return <Spinner size='small' />;
     }
     return (
-      <Button onPress={this.onButtonPress.bind(this)}>
+      <Button onPress={this.loginUser}>
         Log in
       </Button>
     );
@@ -81,7 +94,7 @@ class LoginForm extends Component {
         </CardSection>
 
         <Text style={styles.errorTextStyle}>
-          {this.state.error}
+          {this.props.error}
         </Text>
 
         <CardSection>
