@@ -9,10 +9,13 @@ import {
 import firebase from 'firebase';
 import GlobalFont from 'react-native-global-font';
 import { Header, Footer, ItemsList, Spinner } from './components/common';
+import AddItem from './components/AddItem';
 import LoginForm from './components/LoginForm';
 import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
 import AddItem from './components/AddItem';
 import MainNavBar from './components/MainNavBar';
+import Main from './components/Main';
+
 
 
 class App extends Component {
@@ -27,22 +30,22 @@ class App extends Component {
      let renogare = 'Renogare';
      GlobalFont.applyGlobal(renogare);
 
-     firebase.initializeApp({
-       apiKey: 'AIzaSyCNqlXMbg2il8Rq-vSeHYWONM32EaYQyGc',
-       authDomain: 'costpers-50fd6.firebaseapp.com',
-       databaseURL: 'https://costpers-50fd6.firebaseio.com',
-       projectId: 'costpers-50fd6',
-       storageBucket: 'costpers-50fd6.appspot.com',
-       messagingSenderId: '121755312308'
-    });
-
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ loggedIn: true });
-      } else {
-        this.setState({ loggedIn: false });
-      }
-    });
+    //  firebase.initializeApp({
+    //    apiKey: 'AIzaSyCNqlXMbg2il8Rq-vSeHYWONM32EaYQyGc',
+    //    authDomain: 'costpers-50fd6.firebaseapp.com',
+    //    databaseURL: 'https://costpers-50fd6.firebaseio.com',
+    //    projectId: 'costpers-50fd6',
+    //    storageBucket: 'costpers-50fd6.appspot.com',
+    //    messagingSenderId: '121755312308'
+    // });
+    //
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     this.setState({ loggedIn: true });
+    //   } else {
+    //     this.setState({ loggedIn: false });
+    //   }
+    // });
   }
 
   render() {
@@ -57,12 +60,13 @@ class App extends Component {
         <Scene key="root">
           <Scene key="login" component={LoginForm} title="CostPers" />
           <Scene
-            key="itemslist"
+            key="itemsList"
             component={ItemsList}
             navigationBarStyle={styles.navBar}
-
             initial />
           {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
+          <Scene key="main" component={Main} title="test" />
+          <Scene key="addItem" component={AddItem} title="Add An Item"/>
         </Scene>
       </Router>
     );
