@@ -9,7 +9,6 @@ import {
 import firebase from 'firebase';
 import GlobalFont from 'react-native-global-font';
 import { Header, Footer, ItemsList, Spinner } from './components/common';
-import AddItem from './components/AddItem';
 import LoginForm from './components/LoginForm';
 import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
 import AddItem from './components/AddItem';
@@ -53,9 +52,6 @@ class App extends Component {
       <Router
         NavBar={MainNavBar}
         sceneStyle={{ paddingTop: 65 }}
-        onRight={() => console.log('hi')}
-        rightButtonImage={source={uri: 'https://facebook.github.io/react/img/logo_og.png' }}
-        rightTitle="Add Item"
       >
         <Scene key="root">
           <Scene key="login" component={LoginForm} title="CostPers" />
@@ -63,10 +59,13 @@ class App extends Component {
             key="itemsList"
             component={ItemsList}
             navigationBarStyle={styles.navBar}
+            onRight={() => Actions.addItem()}
+            rightButtonImage={source={uri: 'https://facebook.github.io/react/img/logo_og.png' }}
+            rightTitle="Add Item"
             initial />
           {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
           <Scene key="main" component={Main} title="test" />
-          <Scene key="addItem" component={AddItem} title="Add An Item"/>
+          <Scene key="addItem" component={AddItem} title="Add Item"/>
         </Scene>
       </Router>
     );
