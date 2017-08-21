@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { AsyncStorage, Text } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, InputField, Spinner } from './common';
 
@@ -24,6 +24,21 @@ class LoginForm extends Component {
   }
 
   onLoginSuccess() {
+    axios.post('localhost:3000/login', {
+      params: {
+        email: this.state.email,
+        password: this.state.password
+      }
+    })
+    .then((response) => {
+      var userId = 'USER' + response.data.user_id;
+      AsyncStorage.setItem(userId, JSON.stringify(response.data));
+      console.log(AsyncStorage.getItem(userId));
+    })
+    .catch(() => {
+      console.log('Error');
+    });
+
     this.setState({
       email: '',
       password: '',
