@@ -38,11 +38,12 @@ class App extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <Header />
-        <ItemsList />
-        <Footer />
-      </View>
+      <Router sceneStyle={{ paddingTop: 65 }}>
+        <Scene key="root">
+        <Scene key="login" component={LoginForm} title="CostPers" initial />
+        <Scene key="itemslist" component={ItemsList} title="CostPers" />
+        </Scene>
+      </Router>
     );
   }
 }
