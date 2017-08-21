@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import axios from 'axios';
-import Item from './Item';
+import Item from './item';
 import Costper from './Costper';
 import ContainerSection from '../ContainerSection';
 
