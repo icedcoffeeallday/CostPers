@@ -46,7 +46,8 @@ class ItemsList extends Component {
                     category_id={item.item.category_id}
                   />
                   <Costper key={item.costper.id}
-                        costper = {item.costper.costper }
+                        costper = {item.costper.costper}
+                        item_id = {item.costper.item_id}
                   />
                 </View>
               )})}

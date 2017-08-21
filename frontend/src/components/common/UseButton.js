@@ -5,9 +5,9 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-const UseButton = (props) => {
+const UseButton = ({onPress, children}) => {
   return(
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
       <Text>Click me!</Text>
     </TouchableOpacity>
   )
