@@ -3,12 +3,15 @@ import {
   View,
   Text,
 } from 'react-native';
+import UseButton from './UseButton'
 
 class Costper extends Component {
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>{2+3}</Text>
+        <Text>${this.props.costper}</Text>
+        <UseButton />
       </View>
     );
   }
@@ -16,7 +19,10 @@ class Costper extends Component {
 
 const styles = ({
   container: {
-    height: 20
+    height: 50,
+    flex: 1,
+    justifyContent: 'space-around',
+    flexDirection: 'row'
   },
 });
 
