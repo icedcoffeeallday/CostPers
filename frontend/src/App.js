@@ -9,9 +9,11 @@ import firebase from 'firebase';
 import GlobalFont from 'react-native-global-font';
 import { Header, Footer, ItemsList, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
+import { Scene, Router, Actions } from 'react-native-router-flux';
 
 
 class App extends Component {
+
   state = { loggedIn: null };
 
   componentWillMount() {
@@ -38,11 +40,12 @@ class App extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <Header />
-        <ItemsList />
-        <Footer />
-      </View>
+      <Router sceneStyle={{ paddingTop: 65 }}>
+        <Scene key="root">
+        <Scene key="login" component={LoginForm} title="CostPers"/>
+        <Scene key="itemslist" component={ItemsList} title="CostPers" initial/>
+        </Scene>
+      </Router>
     );
   }
 }
