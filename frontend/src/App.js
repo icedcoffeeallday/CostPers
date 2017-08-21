@@ -3,14 +3,17 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 import axios from 'axios';
-import firebase from 'firebase';
 import GlobalFont from 'react-native-global-font';
+import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
+
 import { Header, Footer, ItemsList, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
-import { Router, Actions, Scene } from 'react-native-router-flux';
+import AddItem from './components/AddItem';
+import MainNavBar from './components/MainNavBar';
 
 
 class App extends Component {
@@ -21,14 +24,17 @@ class App extends Component {
       password: '',
       error: '',
       loading: false,
-      userId: 'hi',
+      userId: '',
       firstName: '',
       lastName: '',
       auth: false,
     };
     this.authentication = this.authentication.bind(this);
-    // this.onButtonPress = this.onButtonPress.bind(this);
-}
+  }
+
+  static renderRightButton(props) {
+    return <Text>Right Button</Text>;
+  }
 
   componentWillMount() {
      let renogare = 'Renogare';
@@ -50,7 +56,7 @@ class App extends Component {
         auth: true
       });
 
-      Actions.itemslist(
+    Actions.itemslist(
         { userId: this.state.userId
         }
       );
@@ -67,21 +73,42 @@ class App extends Component {
     console.log(this.state.userId);
     console.log(this.state.firstName);
     return (
-      <Router sceneStyle={{ paddingTop: 65 }}>
+      
+      <Router
+        NavBar={MainNavBar}
+        sceneStyle={{ paddingTop: 65 }}
+      >
         <Scene key="root">
-        <Scene
+          <Scene
           key="login"
           component={LoginForm}
           authentication={this.authentication}
           title="CostPers"
-          initial />
-        <Scene key="itemslist"
-          component={ItemsList}
-          title="CostPers"
-         />
+          />
+        <Scene
+           key="itemsList"
+           title="CostPers"
+           component={ItemsList}
+           navigationBarStyle={styles.navBar}
+           onRight={() => Actions.addItem()}
+           rightButtonImage={source={uri: 'https://facebook.github.io/react/img/logo_og.png' }}
+           rightTitle="Add Item"
+           initial />
+          {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
+        <Scene key="addItem" component={AddItem} title="Add Item"/>
         </Scene>
       </Router>
     );
+  }
+}
+
+const styles = {
+  navBar: {
+    backgroundColor: '#F0F0F0'
+  },
+  image: {
+    width: 50,
+    height: 50
   }
 }
 

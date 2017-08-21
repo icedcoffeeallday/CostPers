@@ -29,4 +29,4 @@ const styles = ({
 });
 
 
-export { Item };
+export default Item;
