@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, InputField, Spinner } from './common';
+import { Actions } from 'react-native-router-flux';
 
 class LoginForm extends Component {
   state = { email: '', password: '', error: '', loading: false };
