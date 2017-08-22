@@ -42,27 +42,26 @@ class AddItem extends Component {
         <TextInput
           label="Name"
           placeholder="bike"
-          style = {styles.input}
-               placeholder = "Example: Bike"
-               placeholderTextColor = "#6A6B5F"
-               autoCapitalize = "none"
-          onChangeText = {this.handleName}
+          style={styles.input}
+          placeholder="Example: Bike"
+          placeholderTextColor="#6A6B5F"
+          autoCapitalize="none"
+          onChangeText={this.handleName}
         />
         <TextInput
           label="Price"
           placeholder="Example: $100"
-          style = {styles.input}
-               placeholderTextColor = "#6A6B5F"
-          onChangeText = {this.handlePrice}
+          style={styles.input}
+          placeholderTextColor="#6A6B5F"
+          onChangeText={this.handlePrice}
         />
-        <TouchableOpacity
-          style = {styles.submitButton}>
-        <Text style = {styles.submitButtonText}
-              onPress = {
-                () =>this.insertItem(this.state.name, this.state.price)
-              }
+        <TouchableOpacity style={styles.submitButton}>
+        <Text
+          style={styles.submitButtonText}
+          onPress={() => this.insertItem(this.state.name, this.state.price)}
         >
-        Add It! </Text>
+          Add It!
+        </Text>
         </TouchableOpacity>
       </View>
     );
