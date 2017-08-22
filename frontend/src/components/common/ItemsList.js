@@ -28,14 +28,14 @@ class ItemsList extends Component {
                    price: '',
                    img_url: '',
                    star: '',
-                   user_id: '',
+                   user_id: this.props.userId,
                    category_id: ''
                  };
   }
 
   componentWillMount() {
     var myItem = this;
-    axios.get('http://localhost:3000/items')
+    axios.get('http://localhost:3000/users/'+this.state.user_id+'/items')
       .then(function(response) {
         myItem.setState({data: response.data})
       })
@@ -46,7 +46,7 @@ class ItemsList extends Component {
 
     render() {
       console.log('***************');
-      console.log('Props are:' + this.props.userId);
+      console.log('Props are:' + this.state.user_id);
       return (
 
         <ScrollView>
