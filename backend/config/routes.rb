@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :users # narrow this down to necessary routes
 
   get '/login' => 'sessions#new'
-  post   '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  post '/login' => 'sessions#create'
+  # get '/logout' => 'sessions#destroy'
   delete '/logout' => 'sessions#destroy'
 
   root 'items#index'
