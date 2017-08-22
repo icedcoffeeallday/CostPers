@@ -6,7 +6,7 @@ import {
   View,
   Image
 } from 'react-native';
-import firebase from 'firebase';
+import axios from 'axios';
 import GlobalFont from 'react-native-global-font';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Header, Footer, ItemsList, Spinner, TabIcon } from './components/common';
@@ -14,12 +14,22 @@ import AddItem from './components/AddItem';
 import LoginForm from './components/LoginForm';
 import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
 import MainNavBar from './components/MainNavBar';
-import Main from './components/Main';
-
 
 class App extends Component {
-
-  state = { loggedIn: null };
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: '',
+      error: '',
+      loading: false,
+      userId: '',
+      firstName: '',
+      lastName: '',
+      auth: false,
+    };
+    this.authentication = this.authentication.bind(this);
+  }
 
   static renderRightButton(props) {
     return <Text>Right Button</Text>;
@@ -28,45 +38,65 @@ class App extends Component {
   componentWillMount() {
      let renogare = 'Renogare';
      GlobalFont.applyGlobal(renogare);
+  }
 
-    //  firebase.initializeApp({
-    //    apiKey: 'AIzaSyCNqlXMbg2il8Rq-vSeHYWONM32EaYQyGc',
-    //    authDomain: 'costpers-50fd6.firebaseapp.com',
-    //    databaseURL: 'https://costpers-50fd6.firebaseio.com',
-    //    projectId: 'costpers-50fd6',
-    //    storageBucket: 'costpers-50fd6.appspot.com',
-    //    messagingSenderId: '121755312308'
-    // });
-    //
-    // firebase.auth().onAuthStateChanged((user) => {
-    //   if (user) {
-    //     this.setState({ loggedIn: true });
-    //   } else {
-    //     this.setState({ loggedIn: false });
-    //   }
-    // });
+  authentication(email, password) {
+
+    axios.post('http://localhost:3000/login', {
+        email: email,
+        password: password
+    })
+    .then((response) => {
+       this.setState(
+      { userId: response.data.user_id,
+        firstName: response.data.first_name,
+        lastName: response.data.last_name,
+        loading: false,
+        auth: true
+      });
+
+    Actions.itemsList(
+        { userId: this.state.userId
+        }
+      );
+    })
+    .catch(() => this.setState(
+        { error: 'Login failed, please try again.',
+         loading: false
+      }
+      ));
   }
 
   render() {
+    console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+    console.log(this.state.userId);
+    console.log(this.state.firstName);
     return (
+
       <Router
         NavBar={MainNavBar}
         sceneStyle={{ paddingTop: 65 }}
       >
         <Scene key="root">
-          <Scene key="login" component={LoginForm} title="CostPers" />
           <Scene
-            key="itemsList"
-            component={ItemsList}
-            navigationBarStyle={styles.navBar}
-            onRight={() => console.log('hi')}
-            rightButtonIconStyle={{ width: 30, height: 30 }}
-            iconName="add"
-            initial
+          key="login"
+          component={LoginForm}
+          authentication={this.authentication}
+          title="CostPers"
+          initial
           />
+        <Scene
+           key="itemsList"
+           title="CostPers"
+           component={ItemsList}
+           navigationBarStyle={styles.navBar}
+           onRight={() => console.log('hi')}
+           rightButtonIconStyle={{ width: 30, height: 30 }}
+           iconName="add"`
+           // onRight={() => Actions.addItem()}
+            />
           {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
-          <Scene key="main" component={Main} title="test" />
-          <Scene key="addItem" component={AddItem} title="Add An Item" />
+        <Scene key="addItem" component={AddItem} title="Add Item"/>
         </Scene>
       </Router>
     );
