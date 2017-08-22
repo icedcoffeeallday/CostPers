@@ -11,10 +11,10 @@ import LoginForm from '../LoginForm';
 
 
 class ItemsList extends Component {
-  static renderRightButton = ({ iconName }) => {
+  static renderRightButton = ({ iconName, userId }) => {
     return (
       <View>
-        <TouchableOpacity onPress={() => Actions.addItem()}>
+        <TouchableOpacity onPress={() => Actions.addItem({userId: userId})}>
           <Icon size={20} style={{ color: 'black' }} name={iconName} />
         </TouchableOpacity>
       </View>

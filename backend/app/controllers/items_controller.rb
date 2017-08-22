@@ -1,4 +1,13 @@
 class ItemsController < ApplicationController
+  def new
+  end
+
+  def create
+    p params
+    @user = User.find(params[:user_id])
+    @item = @user.items.create(name: params[:name], price: params[:price])
+    render json: @item
+  end
 
   def index
 
@@ -9,7 +18,10 @@ class ItemsController < ApplicationController
 
 
 
+
     render json: @items.as_json
+
+
 
   end
 

@@ -26,6 +26,7 @@ class App extends Component {
       userId: '',
       firstName: '',
       lastName: '',
+      itemId: '',
       auth: false,
     };
     this.authentication = this.authentication.bind(this);
@@ -41,7 +42,6 @@ class App extends Component {
   }
 
   authentication(email, password) {
-
     axios.post('http://localhost:3000/login', {
         email: email,
         password: password
@@ -85,17 +85,20 @@ class App extends Component {
           title="CostPers"
           initial
           />
-        <Scene
-           key="itemsList"
-           title="CostPers"
-           component={ItemsList}
-           navigationBarStyle={styles.navBar}
-           onRight={() => null}
-           rightButtonIconStyle={{ width: 30, height: 30 }}
-           iconName="add"
-            />
-          {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
-        <Scene key="addItem" component={AddItem} title="Add Item"/>
+          <Scene
+             key="itemsList"
+             title="CostPers"
+             component={ItemsList}
+             navigationBarStyle={styles.navBar}
+             onRight={() => null}
+             rightButtonIconStyle={{ width: 30, height: 30 }}
+             iconName="add"
+          />
+          <Scene
+            key="addItem"
+            component={AddItem}
+            title="Add Item"
+          />
         </Scene>
       </Router>
     );
@@ -110,6 +113,6 @@ const styles = {
     width: 50,
     height: 50
   }
-}
+};
 
 export default App;
