@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   resources :catergories
   resources :uses
-  resources :users # narrow this down to necessary routes
+  resources :users do
+    resources :items
+  end
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

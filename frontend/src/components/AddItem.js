@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import axios from 'axios';
 
 class AddItem extends Component {
-  state = {
-    name: '',
-    price: ''
+  constructor(props) {
+    super(props)
+    this.state = {
+      userId: this.props.userId,
+      name: '',
+      price: ''
+    }
   }
 
   handleName = (text) => {
@@ -16,7 +21,19 @@ class AddItem extends Component {
   }
 
   insertItem = (name, price) => {
-    alert ('name: ' + name + ' price: $' + price)
+    console.log("***************************")
+    console.log(this.state.userId)
+    console.log(this.props)
+    axios.post('http://localhost:3000/users/' + this.state.userId + '/items', {
+      name: this.state.name,
+      price: this.state.price
+    })
+    .then(function(response){
+      console.log(response);
+    })
+    .catch(function(response){
+      console.log(response);
+    });
   }
 
   render() {
