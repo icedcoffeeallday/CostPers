@@ -35,21 +35,26 @@ addUse(arg) {
   render() {
 
     return (
-      <View style={styles.container}>
-        <Text>${this.state.costper}</Text>
-        <UseButton onPress={() => this.addUse(this.props.item_id)} />
+      <View>
+        <View style={styles.costperContainer}>
+          <Text style={styles.costText}>${this.state.costper} per use</Text>
+          <UseButton onPress={() => this.addUse(this.props.item_id)} />
+        </View>
       </View>
     );
   }
 }
 
 const styles = ({
-  container: {
-    height: 50,
-    flex: 1,
-    justifyContent: 'space-around',
-    flexDirection: 'row'
+  costText: {
+    fontSize: 16,
+    justifyContent: 'center',
+    color: '#16795B'
   },
+  costperContainer: {
+    padding: 20,
+    flexDirection: 'row'
+  }
 });
 
 export default Costper;

@@ -12,7 +12,7 @@ const InputField = ({ label, value, onChangeText, placeholder, secureTextEntry }
         placeholder={placeholder}
         placeholderTextColor="#D3D3D3"
         autoCorrect={false}
-        style={inputStyle}
+        style={styles.inputText}
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
@@ -27,9 +27,11 @@ const styles = {
     width: 300,
     backgroundColor: 'rgba(225,225,225,0.2)',
     marginBottom: 10,
-    color: '#FFF',
     paddingHorizontal: 10,
     justifyContent: 'center'
+  },
+  inputText: {
+    color: '#FFF'
   }
 };
 

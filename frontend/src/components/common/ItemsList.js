@@ -48,28 +48,35 @@ class ItemsList extends Component {
       console.log('***************');
       console.log('Props are:' + this.state.user_id);
       return (
-
+        <View style={styles.container}>
         <ScrollView>
-            <View style={styles.contentcolumns} >
+            <View >
             {this.state.data.map((item) => {
               return(
                 <View style={styles.rows}>
-                  <Item key={item.item.id}
-                    name={item.item.name}
-                    price={item.item.price}
-                    img_url={item.item.img_url}
-                    star={item.item.star}
-                    user_id={item.item.user_id}
-                    category_id={item.item.category_id}
-                  />
-                  <Costper key={item.costper.id}
-                        costper = {item.costper.costper}
-                        item_id = {item.costper.item_id}
-                  />
+                  <View style={styles.itemInfoContainer}>
+                    <Item key={item.item.id}
+                      name={item.item.name}
+                      price={item.item.price}
+                      img_url={item.item.img_url}
+                      star={item.item.star}
+                      user_id={item.item.user_id}
+                      category_id={item.item.category_id}
+                    />
+                    <Costper key={item.costper.id}
+                          costper = {item.costper.costper}
+                          item_id = {item.costper.item_id}
+                    />
+                  </View>
                 </View>
               )})}
           </View>
       </ScrollView>
+      <View style={styles.footerStyle}>
+        <Text>Footer here</Text>
+      </View> 
+      </View>
+
       );
     }
 }
@@ -78,14 +85,21 @@ const styles = ({
   container: {
     flex: 1,
   },
-  rows: {
-    flexDirection: 'row'
+  footerStyle: {
+    height: 56,
+    position: 'relative',
+    backgroundColor: '#16795B',
+    flexGrow: 1
   },
-
-  contentcolumns: {
-    flex: 1,
-    flexDirection: 'column'
+  rows: {
+    flexDirection: 'column',
+    justifyContent: 'space-around'
+  },
+  itemInfoContainer: {
+    height: 100,
+    justifyContent: 'space-around',
+    borderColor: '#D3D3D3',
+    borderWidth: 1
   }
-
 });
 export { ItemsList };

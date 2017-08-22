@@ -7,22 +7,21 @@ import {
 
 const UseButton = ({onPress, children}) => {
   return(
-    <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Text>Click me!</Text>
-    </TouchableOpacity>
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity onPress={onPress} >
+        <Text>Click me!</Text>
+      </TouchableOpacity>
+    </View>
   )
 };
 
 export default UseButton;
 
-const styles =({
-  container: {
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#007aff',
-    marginLeft: 5,
-    marginRight: 5
-  },
+const styles = ({
+  buttonContainer: {
+    width: 120,
+    height: 20,
+    backgroundColor: 'blue',
+    alignItems: 'flex-end'
+  }
 });

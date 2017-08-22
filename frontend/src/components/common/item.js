@@ -6,16 +6,22 @@ import { View,Text } from 'react-native';
 class Item extends Component {
   render(){
     return(
-      <View>
-        <Text>{this.props.name}</Text>
+      <View style={styles.itemNameContainer}>
+        <Text style={styles.itemNameDisplay}>{this.props.name}</Text>
       </View>
     )
   }
 }
 
 const styles = ({
-  // container: {
-  //   flex:1,
+  itemNameDisplay: {
+    fontSize: 32,
+    justifyContent: 'center',
+    color: '#16795B'
+  },
+  itemNameContainer: {
+    padding: 20
+  }
 });
 
 
