@@ -93,6 +93,7 @@ class App extends Component {
              onRight={() => null}
              rightButtonIconStyle={{ width: 30, height: 30 }}
              iconName="add"
+             renderBackButton={()=>(null)}
           />
           <Scene
             key="addItem"

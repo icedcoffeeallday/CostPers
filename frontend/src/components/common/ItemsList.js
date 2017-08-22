@@ -4,17 +4,17 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
 import {Item} from './';
-  // If issues with Item, try adding filename back to from path
 import Costper from './Costper';
 import ContainerSection from '../ContainerSection';
 import LoginForm from '../LoginForm';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 class ItemsList extends Component {
-  static renderRightButton = ({ iconName, userId }) => {
+  static renderRightButton = ({ iconName }) => {
     return (
       <View>
-        <TouchableOpacity onPress={() => Actions.addItem({userId: userId})}>
+        <TouchableOpacity onPress={() => Actions.addItem()}>
           <Icon size={20} style={{ color: 'black' }} name={iconName} />
         </TouchableOpacity>
       </View>
@@ -48,7 +48,7 @@ class ItemsList extends Component {
       console.log('***************');
       console.log('Props are:' + this.state.user_id);
       return (
-
+      <View style={styles.container}>
         <ScrollView>
             <View style={styles.contentcolumns} >
             {this.state.data.map((item) => {
@@ -70,6 +70,10 @@ class ItemsList extends Component {
               )})}
           </View>
       </ScrollView>
+        <View style={styles.footerStyle}>
+          <Text>I am a footer</Text>
+        </View>
+      </View>
       );
     }
 }
@@ -81,10 +85,15 @@ const styles = ({
   rows: {
     flexDirection: 'row'
   },
-
   contentcolumns: {
     flex: 1,
     flexDirection: 'column'
+  },
+  footerStyle: {
+    height: 56,
+    position: 'relative',
+    backgroundColor: "#16795B",
+    flexGrow: 1
   }
 
 });
