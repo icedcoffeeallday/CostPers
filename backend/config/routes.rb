@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     resources :uses
   end
 
+  resources :users do 
+    resources :items 
+  end
+
   resources :catergories
   resources :uses
   resources :users # narrow this down to necessary routes
