@@ -10,24 +10,23 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    p params 
+
+    @user = User.find_by(id: params[:user_id])
+
+    @items = @user.items 
     @testitem = []
 
-      @items.each do |item|
-        if item.uses.count > 1
-          newcostper = (item.price / item.uses.count).round
-        else
-          newcostper = item.price.round
-        end
+    @items.each do |item|
+      if item.uses.count > 1
+        newcostper = (item.price / item.uses.count).round
+      else
+        newcostper = item.price.round
+      end
         itemcp = { id: item.id.to_s + item.name, costper: newcostper, item_id: item.id}
         @testitem << {:item => item, :costper => itemcp}
-      end
+    end
     render json: @testitem
-  end
-
-  # private
-  # def item_params
-  #   params.require(:item).permit(:name, :price)
-  # end
+  end  
 
 end

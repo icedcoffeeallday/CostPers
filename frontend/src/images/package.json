@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "babel-preset-react-native": "2.1.0"
+  }
+}
