@@ -62,8 +62,6 @@ class App extends Component {
             onRight={() => console.log('hi')}
             rightButtonIconStyle={{ width: 30, height: 30 }}
             iconName="add"
-            // rightTitle="Add Item"
-            // rightButtonImage={source={uri: 'https://facebook.github.io/react/img/logo_og.png' }}
             initial
           />
           {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
