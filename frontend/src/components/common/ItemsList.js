@@ -73,9 +73,9 @@ class ItemsList extends Component {
       </ScrollView>
         <View style={styles.footerStyle}>
 
-          <TouchableOpacity onPress={() => null}>
-            <Icon size={40} style={{ color: 'white' }} name="home" />
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => null}>
+              <Icon size={40} style={{ color: 'white' }} name="home" />
+            </TouchableOpacity>
 
           <TouchableOpacity onPress={() => Actions.addItem()}>
             <Icon size={50} style={{ color: 'white' }} name="add-circle" />
@@ -106,8 +106,9 @@ const styles = ({
     height: 56,
     position: 'relative',
     backgroundColor: "#16795B",
-    flexGrow: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
   }
 
 });
