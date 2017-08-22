@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Hyperlink } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
@@ -45,8 +45,7 @@ class ItemsList extends Component {
     }
 
     render() {
-      console.log('***************');
-      console.log('Props are:' + this.state.user_id);
+
       return (
 
         <ScrollView>
@@ -54,18 +53,19 @@ class ItemsList extends Component {
             {this.state.data.map((item) => {
               return(
                 <View style={styles.rows}>
-                  <Item key={item.item.id}
-                    name={item.item.name}
-                    price={item.item.price}
-                    img_url={item.item.img_url}
-                    star={item.item.star}
-                    user_id={item.item.user_id}
-                    category_id={item.item.category_id}
+                  <Item key={item.id}
+                    name={item.name}
+                    price={item.price}
+                    img_url={item.img_url}
+                    star={item.star}
+                    user_id={item.user_id}
+                    category_id={item.category_id}
                   />
                   <Costper key={item.costper.id}
                         costper = {item.costper.costper}
                         item_id = {item.costper.item_id}
                   />
+
                 </View>
               )})}
           </View>
