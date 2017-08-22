@@ -56,7 +56,7 @@ class App extends Component {
         auth: true
       });
 
-    Actions.itemslist(
+    Actions.itemsList(
         { userId: this.state.userId
         }
       );
@@ -73,7 +73,7 @@ class App extends Component {
     console.log(this.state.userId);
     console.log(this.state.firstName);
     return (
-      
+
       <Router
         NavBar={MainNavBar}
         sceneStyle={{ paddingTop: 65 }}
@@ -84,6 +84,7 @@ class App extends Component {
           component={LoginForm}
           authentication={this.authentication}
           title="CostPers"
+          initial
           />
         <Scene
            key="itemsList"
@@ -93,7 +94,7 @@ class App extends Component {
            onRight={() => Actions.addItem()}
            rightButtonImage={source={uri: 'https://facebook.github.io/react/img/logo_og.png' }}
            rightTitle="Add Item"
-           initial />
+            />
           {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
         <Scene key="addItem" component={AddItem} title="Add Item"/>
         </Scene>
