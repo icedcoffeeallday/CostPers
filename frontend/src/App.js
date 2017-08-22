@@ -90,10 +90,9 @@ class App extends Component {
            title="CostPers"
            component={ItemsList}
            navigationBarStyle={styles.navBar}
-           onRight={() => console.log('hi')}
+           onRight={() => null}
            rightButtonIconStyle={{ width: 30, height: 30 }}
-           iconName="add"`
-           // onRight={() => Actions.addItem()}
+           iconName="add"
             />
           {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
         <Scene key="addItem" component={AddItem} title="Add Item"/>
