@@ -4,35 +4,32 @@ import axios from 'axios';
 
 class AddItem extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       userId: this.props.userId,
       name: '',
       price: ''
-    }
+    };
   }
 
   handleName = (text) => {
-    this.setState({ name: text})
+    this.setState({ name: text });
   }
 
   handlePrice = (text) => {
-    this.setState({ price: text })
+    this.setState({ price: text });
   }
 
-  insertItem = (name, price) => {
-    console.log("***************************")
-    console.log(this.state.userId)
-    console.log(this.props)
+  insertItem = () => {
     axios.post('http://localhost:3000/users/' + this.state.userId + '/items', {
       name: this.state.name,
       price: this.state.price
     })
-    .then(function(response){
-      console.log(response);
+    .then(() => {
+      alert('Item has been added!');
     })
-    .catch(function(response){
-      console.log(response);
+    .catch(() => {
+      alert('There was an issue adding your item.');
     });
   }
 
@@ -58,7 +55,7 @@ class AddItem extends Component {
         <TouchableOpacity style={styles.submitButton}>
         <Text
           style={styles.submitButtonText}
-          onPress={() => this.insertItem(this.state.name, this.state.price)}
+          onPress={() => this.insertItem()}
         >
           Add It!
         </Text>
@@ -87,8 +84,8 @@ const styles = StyleSheet.create({
       margin: 15,
       height: 40,
    },
-   submitButtonText:{
+   submitButtonText: {
       color: 'white',
       textAlign: 'center'
    }
-})
+});
