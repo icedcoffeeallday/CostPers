@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     p params
     @user = User.find(params[:user_id])
     @item = @user.items.create(name: params[:name], price: params[:price])
-    render json: @item
+    render json: @item.as_json
   end
 
   def index
