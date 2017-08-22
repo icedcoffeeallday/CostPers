@@ -1,16 +1,19 @@
 class SessionsController < ApplicationController
+  protect_from_forgery with: :null_session
+
   def new
   end
 
   def create
-    user = User.find_by(email: params[:email].downcase)
+    p params
+    user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       render json: {
         user_id: user.id,
         first_name: user.first_name,
         last_name: user.last_name,
         auth: true
-      }.to_json
+      }
     else
       render json: {
         user_id: null,
