@@ -21,16 +21,15 @@ addUse(arg) {
       item_id: arg
     })
     .then(function(response) {
-      console.log(response.data)
       myCostper.setState({costper: response.data })
     })
     .catch(function(response) {
       console.log("broken")
-      console.log(arg)
-      console.log(response)
     })
 
   }
+
+
 
   render() {
 
