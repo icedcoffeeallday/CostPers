@@ -94,6 +94,7 @@ class App extends Component {
            onRight={() => Actions.addItem()}
            rightButtonImage={source={uri: 'https://facebook.github.io/react/img/logo_og.png' }}
            rightTitle="Add Item"
+           renderBackButton={()=>(null)}
             />
           {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
         <Scene key="addItem" component={AddItem} title="Add Item"/>
