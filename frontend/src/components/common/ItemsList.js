@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
 import {Item} from './';
   // If issues with Item, try adding filename back to from path
@@ -9,6 +11,16 @@ import LoginForm from '../LoginForm';
 
 
 class ItemsList extends Component {
+  static renderRightButton = ({ iconName }) => {
+    return (
+      <View>
+        <TouchableOpacity onPress={() => Actions.addItem()}>
+          <Icon size={20} style={{ color: 'black' }} name={iconName} />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   constructor(props) {
     super(props);
     this.state = { data: [],
