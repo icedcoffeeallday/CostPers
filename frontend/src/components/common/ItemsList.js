@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import axios from 'axios';
-import { Item } from './';
+import {Item} from './';
   // If issues with Item, try adding filename back to from path
 import Costper from './Costper';
 import ContainerSection from '../ContainerSection';
