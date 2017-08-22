@@ -93,7 +93,6 @@ class App extends Component {
              onRight={() => null}
              rightButtonIconStyle={{ width: 30, height: 30 }}
              iconName="add"
-             userId={this.state.userId}
           />
           <Scene
             key="addItem"
