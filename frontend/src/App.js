@@ -8,13 +8,12 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import GlobalFont from 'react-native-global-font';
-import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
-
-import { Header, Footer, ItemsList, Spinner } from './components/common';
-import LoginForm from './components/LoginForm';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Header, Footer, ItemsList, Spinner, TabIcon } from './components/common';
 import AddItem from './components/AddItem';
+import LoginForm from './components/LoginForm';
+import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
 import MainNavBar from './components/MainNavBar';
-
 
 class App extends Component {
   constructor() {
@@ -91,9 +90,9 @@ class App extends Component {
            title="CostPers"
            component={ItemsList}
            navigationBarStyle={styles.navBar}
-           onRight={() => Actions.addItem()}
-           rightButtonImage={source={uri: 'https://facebook.github.io/react/img/logo_og.png' }}
-           rightTitle="Add Item"
+           onRight={() => null}
+           rightButtonIconStyle={{ width: 30, height: 30 }}
+           iconName="add"
             />
           {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
         <Scene key="addItem" component={AddItem} title="Add Item"/>

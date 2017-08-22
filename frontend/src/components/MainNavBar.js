@@ -7,7 +7,6 @@ class MainNavBar extends Component {
     return (
       <NavBar
         title="title"
-        
       />
     );
   }
