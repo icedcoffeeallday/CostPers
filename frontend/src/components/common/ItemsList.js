@@ -7,7 +7,6 @@ import {Item} from './';
 import Costper from './Costper';
 import ContainerSection from '../ContainerSection';
 import LoginForm from '../LoginForm';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 class ItemsList extends Component {
@@ -20,6 +19,8 @@ class ItemsList extends Component {
       </View>
     );
   }
+
+  // const addItemIcon=(<Icon name="add-circle" size={30} color="FFFFFF"/>)
 
   constructor(props) {
     super(props);
@@ -71,7 +72,19 @@ class ItemsList extends Component {
           </View>
       </ScrollView>
         <View style={styles.footerStyle}>
-          <Text>I am a footer</Text>
+
+          <TouchableOpacity onPress={() => null}>
+            <Icon size={40} style={{ color: 'white' }} name="home" />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => Actions.addItem()}>
+            <Icon size={50} style={{ color: 'white' }} name="add-circle" />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => null}>
+            <Icon size={40} style={{ color: 'white' }} name="exit-to-app" />
+          </TouchableOpacity>
+
         </View>
       </View>
       );
@@ -93,8 +106,11 @@ const styles = ({
     height: 56,
     position: 'relative',
     backgroundColor: "#16795B",
-    flexGrow: 1
+    flexGrow: 1,
+    flexDirection: 'row'
   }
 
 });
+
+
 export { ItemsList };
