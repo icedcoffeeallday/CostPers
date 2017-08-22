@@ -5,28 +5,24 @@ class ItemsController < ApplicationController
   def create
     p params
     @user = User.find(params[:user_id])
-    @item = @user.items.create(name: params[:name], price: params[:price], category_id: 1)
-    render json: @item
+    @item = @user.items.create(name: params[:name], price: params[:price])
+    render json: @item.as_json
   end
 
   def index
-    p params 
 
     @user = User.find_by(id: params[:user_id])
-
-    @items = @user.items 
-    @testitem = []
-
-    @items.each do |item|
-      if item.uses.count > 1
-        newcostper = (item.price / item.uses.count).round
-      else
-        newcostper = item.price.round
-      end
-        itemcp = { id: item.id.to_s + item.name, costper: newcostper, item_id: item.id}
-        @testitem << {:item => item, :costper => itemcp}
+    @items = @user.items.sort do |x,y|
+      y.cost_per[:costper] <=> x.cost_per[:costper]
     end
-    render json: @testitem
-  end  
+
+
+
+
+    render json: @items.as_json
+
+
+
+  end
 
 end
