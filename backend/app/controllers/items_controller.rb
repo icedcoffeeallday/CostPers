@@ -10,11 +10,11 @@ class ItemsController < ApplicationController
   end
 
   def index
-    p params 
+    p params
 
     @user = User.find_by(id: params[:user_id])
 
-    @items = @user.items 
+    @items = @user.items
     @testitem = []
 
     @items.each do |item|
@@ -27,6 +27,6 @@ class ItemsController < ApplicationController
         @testitem << {:item => item, :costper => itemcp}
     end
     render json: @testitem
-  end  
+  end
 
 end
