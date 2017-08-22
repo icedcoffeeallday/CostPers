@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
 import Item from './item';
 import Costper from './Costper';
@@ -7,6 +9,18 @@ import ContainerSection from '../ContainerSection';
 
 
 class ItemsList extends Component {
+  static renderRightButton = ({ selected, iconName }) => {
+    const color = selected ? 'white' : 'black';
+
+    return (
+      <View>
+        <TouchableOpacity onPress={() => Actions.addItem()}>
+          <Icon size={20} style={{ color }} name={iconName} />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   constructor(){
     super()
     this.state = {data: [],
@@ -30,7 +44,6 @@ class ItemsList extends Component {
         console.log(error)
       })
     }
-
 
     render() {
       return (

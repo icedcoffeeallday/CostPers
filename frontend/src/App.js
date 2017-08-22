@@ -8,14 +8,13 @@ import {
 } from 'react-native';
 import firebase from 'firebase';
 import GlobalFont from 'react-native-global-font';
-import { Header, Footer, ItemsList, Spinner } from './components/common';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Header, Footer, ItemsList, Spinner, TabIcon } from './components/common';
 import AddItem from './components/AddItem';
 import LoginForm from './components/LoginForm';
 import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
-import AddItem from './components/AddItem';
 import MainNavBar from './components/MainNavBar';
 import Main from './components/Main';
-
 
 
 class App extends Component {
@@ -55,7 +54,9 @@ class App extends Component {
         sceneStyle={{ paddingTop: 65 }}
         onRight={() => console.log('hi')}
         rightButtonImage={source={uri: 'https://facebook.github.io/react/img/logo_og.png' }}
+        rightButtonIconStyle={{ width: 30, height: 30 }}
         rightTitle="Add Item"
+        iconName="add"
       >
         <Scene key="root">
           <Scene key="login" component={LoginForm} title="CostPers" />
