@@ -52,11 +52,6 @@ class App extends Component {
       <Router
         NavBar={MainNavBar}
         sceneStyle={{ paddingTop: 65 }}
-        onRight={() => console.log('hi')}
-        rightButtonImage={source={uri: 'https://facebook.github.io/react/img/logo_og.png' }}
-        rightButtonIconStyle={{ width: 30, height: 30 }}
-        rightTitle="Add Item"
-        iconName="add"
       >
         <Scene key="root">
           <Scene key="login" component={LoginForm} title="CostPers" />
@@ -64,10 +59,16 @@ class App extends Component {
             key="itemsList"
             component={ItemsList}
             navigationBarStyle={styles.navBar}
-            initial />
+            onRight={() => console.log('hi')}
+            rightButtonIconStyle={{ width: 30, height: 30 }}
+            iconName="add"
+            // rightTitle="Add Item"
+            // rightButtonImage={source={uri: 'https://facebook.github.io/react/img/logo_og.png' }}
+            initial
+          />
           {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
           <Scene key="main" component={Main} title="test" />
-          <Scene key="addItem" component={AddItem} title="Add An Item"/>
+          <Scene key="addItem" component={AddItem} title="Add An Item" />
         </Scene>
       </Router>
     );

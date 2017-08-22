@@ -9,13 +9,11 @@ import ContainerSection from '../ContainerSection';
 
 
 class ItemsList extends Component {
-  static renderRightButton = ({ selected, iconName }) => {
-    const color = selected ? 'white' : 'black';
-
+  static renderRightButton = ({ iconName }) => {
     return (
       <View>
         <TouchableOpacity onPress={() => Actions.addItem()}>
-          <Icon size={20} style={{ color }} name={iconName} />
+          <Icon size={20} style={{ color: 'black' }} name={iconName} />
         </TouchableOpacity>
       </View>
     );
