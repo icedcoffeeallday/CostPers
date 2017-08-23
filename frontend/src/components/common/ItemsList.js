@@ -96,6 +96,7 @@ class ItemsList extends Component {
                 </View>
               )})}
           </View>
+        </View>
       </ScrollView>
         <View style={styles.footerStyle}>
           <Text>
@@ -122,11 +123,12 @@ const styles = ({
     justifyContent: 'space-around'
   },
   itemInfoContainer: {
-    height: 90,
+    height: 100,
     justifyContent: 'space-around',
     borderColor: '#D3D3D3',
-    borderWidth: 1,
-    paddingTop: 15
+    borderWidth: 0.5,
+    paddingTop: 20,
+    paddingBottom: 10
   }
 });
 export { ItemsList };

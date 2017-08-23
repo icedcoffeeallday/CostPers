@@ -39,7 +39,9 @@ addUse(arg) {
             <Text style={styles.costText}>${this.state.costper}</Text>
             <Text style={styles.perUseText}> per use</Text>
           </View>
+          <View style={styles.buttonPlacement}>
             <UseButton onPress={() => this.addUse(this.props.item_id)} />
+          </View>
         </View>
       </View>
     );
@@ -49,7 +51,8 @@ addUse(arg) {
 const styles = ({
   allText: {
     flexDirection: 'row',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
+    // backgroundColor: 'blue'
   },
   costText: {
     fontSize: 20,
@@ -59,10 +62,17 @@ const styles = ({
     color: '#808080',
     fontSize: 16
   },
+  buttonPlacement: {
+    flexDirection: 'row',
+    // backgroundColor: 'purple',
+    height: 40
+  },
   costperContainer: {
     padding: 20,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    // backgroundColor: 'orange',
+    alignItems: 'flex-end'
   }
 });
 
