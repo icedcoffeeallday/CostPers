@@ -4,7 +4,10 @@ class ItemsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @item = @user.items.create(name: params[:name], price: params[:price])
+    @item = @user.items.new(name: params[:name], price: params[:price])
+    if @item.save
+      @item.uses.create
+    end
     render json: @item.as_json
   end
 
@@ -12,8 +15,7 @@ class ItemsController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @items = @user.items.sort do |x,y|
       y.cost_per[:costper] <=> x.cost_per[:costper]
-    end
-    
+    end    
     render json: @items.as_json
   end
 

@@ -4,22 +4,12 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
 import {Item} from './';
-  // If issues with Item, try adding filename back to from path
 import Costper from './Costper';
 import ContainerSection from '../ContainerSection';
 import LoginForm from '../LoginForm';
 
 
 class ItemsList extends Component {
-  static renderRightButton = ({ iconName, userId }) => {
-    return (
-      <View>
-        <TouchableOpacity onPress={() => Actions.addItem({userId: userId})}>
-          <Icon size={20} style={{ color: 'black' }} name={iconName} />
-        </TouchableOpacity>
-      </View>
-    );
-  }
 
   constructor(props) {
     super(props);
@@ -32,7 +22,7 @@ class ItemsList extends Component {
                    category_id: ''
                  };
     this.updateItemFunc = this.updateItemFunc.bind(this)
-
+    
   }
 
   componentWillMount() {
@@ -69,7 +59,7 @@ class ItemsList extends Component {
 
     render() {
       return (
-        <View style={styles.container}>
+      <View style={styles.container}>
         <ScrollView>
             <View >
             <View style={styles.contentcolumns} >
@@ -99,12 +89,14 @@ class ItemsList extends Component {
         </View>
       </ScrollView>
         <View style={styles.footerStyle}>
-          <Text>
-            <Icon name="add-circle" size={30} style={{color: 'black'}}/>
-          </Text>
+          <TouchableOpacity onPress={() => Actions.addItem({ userId: this.state.user_id })}>
+            <View style={styles.footerSubGroup}>
+              <Icon size={40} style={{ color: 'white' }} name="add-circle"/>
+              <Text style={styles.footerTextStyle}>Add Item</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
-
       );
     }
 }
@@ -112,11 +104,6 @@ class ItemsList extends Component {
 const styles = ({
   container: {
     flex: 1,
-  },
-  footerStyle: {
-    height: 56,
-    position: 'relative',
-    backgroundColor: '#16795B'
   },
   rows: {
     flexDirection: 'column',
@@ -130,5 +117,24 @@ const styles = ({
     paddingTop: 20,
     paddingBottom: 10
   }
+  footerStyle: {
+    height: 60,
+    position: 'relative',
+    backgroundColor: "#16795B",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  footerTextStyle: {
+    color: 'white',
+    fontSize: 13
+  },
+  footerSubGroup: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+
 });
+
+
 export { ItemsList };

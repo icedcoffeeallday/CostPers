@@ -20,8 +20,8 @@ addUse(arg) {
       item_id: arg
     })
     .then(function(response) {
+      myCostper.setState({costper: response.data})
       myCostper.props.updateItem(response.data)
-
     })
     .catch(function(response) {
       console.log("broken")

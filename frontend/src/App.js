@@ -92,15 +92,20 @@ class App extends Component {
            title="CostPers"
            component={ItemsList}
            navigationBarStyle={styles.navBar}
-           onRight={() => null}
-           rightButtonIconStyle={{ width: 30, height: 30 }}
-           iconName="add"
+           renderBackButton={()=>(null)}
         />
-          {/* itemsList inital={loggedIn} <- boolean method to determine loggedin/authenication  */}
-        <Scene key="addItem" component={AddItem} title="Add Item" />
+ 
+        <Scene 
+            key="addItem" 
+            component={AddItem} 
+            title="Add Item" 
+        />
 
-        <Scene key="itemDetails" component={ItemDetails} title="Item Details" />
-
+        <Scene 
+            key="itemDetails" 
+            component={ItemDetails} 
+            title="Item Details" 
+        />
         </Scene>
       </Router>
     );
