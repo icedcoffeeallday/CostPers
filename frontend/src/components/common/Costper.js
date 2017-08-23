@@ -20,41 +20,60 @@ addUse(arg) {
       item_id: arg
     })
     .then(function(response) {
-      console.log(response)
       myCostper.setState({costper: response.data})
       myCostper.props.updateItem(response.data)
-      // myCostper.setState({costper: response.data })
-
-
     })
     .catch(function(response) {
       console.log("broken")
-      console.log(response)
-      console.log(this.state.data)
     })
 
   }
 
 
-
   render() {
 
     return (
-      <View style={styles.container}>
-        <Text>${this.state.costper}</Text>
-        <UseButton onPress={() => this.addUse(this.props.item_id)} />
+      <View>
+        <View style={styles.costperContainer}>
+          <View style={styles.allText}>
+            <Text style={styles.costText}>${this.state.costper}</Text>
+            <Text style={styles.perUseText}> per use</Text>
+          </View>
+          <View style={styles.buttonPlacement}>
+            <UseButton onPress={() => this.addUse(this.props.item_id)} />
+          </View>
+        </View>
       </View>
     );
   }
 }
 
 const styles = ({
-  container: {
-    height: 50,
-    flex: 1,
-    justifyContent: 'space-around',
-    flexDirection: 'row'
+  allText: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    // backgroundColor: 'blue'
   },
+  costText: {
+    fontSize: 20,
+    color: '#16795B'
+  },
+  perUseText: {
+    color: '#808080',
+    fontSize: 16
+  },
+  buttonPlacement: {
+    flexDirection: 'row',
+    // backgroundColor: 'purple',
+    height: 40
+  },
+  costperContainer: {
+    padding: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    // backgroundColor: 'orange',
+    alignItems: 'flex-end'
+  }
 });
 
 export default Costper;

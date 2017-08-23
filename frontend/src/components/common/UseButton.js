@@ -4,25 +4,35 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const UseButton = ({onPress, children}) => {
   return(
-    <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Text>Click me!</Text>
-    </TouchableOpacity>
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity 
+        onPress={onPress}
+         >
+          <View style={styles.checkCircleIcon}>
+            <Icon 
+            name="check-circle" 
+            size={40} 
+            style={{color: 'gray', reverseColor: 'white'}} 
+          />
+          </View>
+      </TouchableOpacity>
+    </View>
   )
 };
 
 export default UseButton;
 
-const styles =({
-  container: {
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#007aff',
-    marginLeft: 5,
-    marginRight: 5
+const styles = ({
+  checkCircleIcon: {
   },
+  buttonContainer: {
+    width: 75,
+    height: 20,
+    alignItems: 'flex-end'
+  }
 });
+

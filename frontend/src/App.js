@@ -14,6 +14,7 @@ import AddItem from './components/AddItem';
 import LoginForm from './components/LoginForm';
 import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
 import MainNavBar from './components/MainNavBar';
+import ItemDetails from './components/ItemDetails';
 
 class App extends Component {
   constructor() {
@@ -85,19 +86,26 @@ class App extends Component {
           title="CostPers"
           initial
           />
-          <Scene
-             key="itemsList"
-             title="CostPers"
-             component={ItemsList}
-             navigationBarStyle={styles.navBar}
-             iconName="add"
-             renderBackButton={()=>(null)}
-          />
-          <Scene
-            key="addItem"
-            component={AddItem}
-            title="Add Item"
-          />
+
+        <Scene
+           key="itemsList"
+           title="CostPers"
+           component={ItemsList}
+           navigationBarStyle={styles.navBar}
+           renderBackButton={()=>(null)}
+        />
+ 
+        <Scene 
+            key="addItem" 
+            component={AddItem} 
+            title="Add Item" 
+        />
+
+        <Scene 
+            key="itemDetails" 
+            component={ItemDetails} 
+            title="Item Details" 
+        />
         </Scene>
       </Router>
     );
