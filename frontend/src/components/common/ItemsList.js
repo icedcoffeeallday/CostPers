@@ -116,7 +116,7 @@ const styles = ({
     borderWidth: 0.5,
     paddingTop: 20,
     paddingBottom: 10
-  }
+  },
   footerStyle: {
     height: 60,
     position: 'relative',
