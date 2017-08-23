@@ -29,7 +29,7 @@ class AddItem extends Component {
       alert('Item has been added!');
     })
     .catch(() => {
-    
+
       alert('There was an issue adding your item.');
     });
   }
