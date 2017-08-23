@@ -21,7 +21,7 @@ addUse(arg) {
     })
     .then(function(response) {
       console.log(response)
-
+      myCostper.setState({costper: response.data})
       myCostper.props.updateItem(response.data)
       // myCostper.setState({costper: response.data })
 
