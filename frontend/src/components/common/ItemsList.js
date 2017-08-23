@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Hyperlink } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
@@ -11,10 +11,10 @@ import LoginForm from '../LoginForm';
 
 
 class ItemsList extends Component {
-  static renderRightButton = ({ iconName }) => {
+  static renderRightButton = ({ iconName, userId }) => {
     return (
       <View>
-        <TouchableOpacity onPress={() => Actions.addItem()}>
+        <TouchableOpacity onPress={() => Actions.addItem({userId: userId})}>
           <Icon size={20} style={{ color: 'black' }} name={iconName} />
         </TouchableOpacity>
       </View>
@@ -31,6 +31,8 @@ class ItemsList extends Component {
                    user_id: this.props.userId,
                    category_id: ''
                  };
+    this.updateItemFunc = this.updateItemFunc.bind(this)
+
   }
 
   componentWillMount() {
@@ -44,29 +46,52 @@ class ItemsList extends Component {
       });
     }
 
+    updateItemFunc(index){
+      var thisItemsList = this
+
+      return function(newCostper) {
+        var data = thisItemsList.state.data
+        var oldItem = data[index]
+        oldItem.costper.costper = newCostper
+        data[index] = oldItem
+        thisItemsList.setState({ data: data })
+        thisItemsList.sortList()
+      }
+    }
+
+    sortList() {
+      var newList = this.state.data.sort(function(a,b) {
+        return b.costper.costper - a.costper.costper
+
+      })
+      this.setState({ data: newList })
+    }
+
     render() {
-      console.log('***************');
-      console.log('Props are:' + this.state.user_id);
       return (
         <View style={styles.container}>
         <ScrollView>
             <View >
-            {this.state.data.map((item) => {
+            <View style={styles.contentcolumns} >
+            {this.state.data.map((item, index) => {
               return(
                 <View style={styles.rows}>
                   <View style={styles.itemInfoContainer}>
-                    <Item key={item.item.id}
-                      name={item.item.name}
-                      price={item.item.price}
-                      img_url={item.item.img_url}
-                      star={item.item.star}
-                      user_id={item.item.user_id}
-                      category_id={item.item.category_id}
-                    />
-                    <Costper key={item.costper.id}
-                          costper = {item.costper.costper}
-                          item_id = {item.costper.item_id}
-                    />
+               
+                  <Item key={item.id}
+                    name={item.name}
+                    price={item.price}
+                    img_url={item.img_url}
+                    star={item.star}
+                    user_id={item.user_id}
+                    item_id={item.id}
+                    category_id={item.category_id}
+                  />
+                  <Costper key={item.costper.id}
+                        costper = {item.costper.costper}
+                        item_id = {item.costper.item_id}
+                        updateItem={this.updateItemFunc(index)}
+                  />
                   </View>
                 </View>
               )})}
