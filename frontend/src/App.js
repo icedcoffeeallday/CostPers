@@ -29,8 +29,10 @@ class App extends Component {
       lastName: '',
       itemId: '',
       auth: false,
+      data: []
     };
     this.authentication = this.authentication.bind(this);
+    // this.addNewItem = this.addNewItem.bind(this);
   }
 
   static renderRightButton(props) {
@@ -68,12 +70,17 @@ class App extends Component {
       ));
   }
 
+  // addNewItem(item) {
+  //   var items = this.state.data;
+  //   items.push(item);
+  //   this.setState({ data: items });
+  // }
+
   render() {
     console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&');
     console.log(this.state.userId);
     console.log(this.state.firstName);
     return (
-
       <Router
         NavBar={MainNavBar}
         sceneStyle={{ paddingTop: 65 }}
@@ -94,17 +101,18 @@ class App extends Component {
            navigationBarStyle={styles.navBar}
            renderBackButton={()=>(null)}
         />
- 
-        <Scene 
-            key="addItem" 
-            component={AddItem} 
-            title="Add Item" 
+
+        <Scene
+            key="addItem"
+            component={AddItem}
+            title="Add Item"
+            // newItem={this.addNewItem(item)}
         />
 
-        <Scene 
-            key="itemDetails" 
-            component={ItemDetails} 
-            title="Item Details" 
+        <Scene
+            key="itemDetails"
+            component={ItemDetails}
+            title="Item Details"
         />
         </Scene>
       </Router>

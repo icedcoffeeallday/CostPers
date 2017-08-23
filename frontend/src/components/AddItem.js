@@ -9,7 +9,9 @@ class AddItem extends Component {
     this.state = {
       userId: this.props.userId,
       name: '',
-      price: ''
+      price: '',
+      data: [],
+      error: ''
     };
     this.insertItem = this.insertItem.bind(this);
   }
@@ -23,25 +25,47 @@ class AddItem extends Component {
   }
 
   insertItem = () => {
+    var thisItem = this;
     axios.post('http://localhost:3000/users/' + this.state.userId + '/items', {
       name: this.state.name,
       price: this.state.price
     })
     .then((response) => {
-      this.props.newItem(response.data);
+      // thisItem.props.newItem(response.data);
+      console.log('***************')
       console.log(response.data);
-      console.log(response);
+      this.setState({data: response.data });
+      // Actions.ItemsList({
+      //   data: response.data
+      // });
+      // console.log(response.data);
+      // console.log(response);
       // Actions.pop();
-      alert('Item has been added!');
+      // alert('Item has been added!');
+
+      Actions.itemsList({
+        data: this.state.data,
+        userId: this.state.userId
+      });
     })
-    .catch(() => {
-      alert('There was an issue adding your item.');
-    });
+    .catch(() => this.setState(
+        { error: 'Item not added.'
+      }
+    ));
   }
+  //
+  // redirectToItemsList = () => {
+  //   if (this.state.data.length > 1) {
+  //     Actions.ItemsList({
+  //       data: this.state.data
+  //     });
+  //   }
+  // }
 
   render() {
     return (
       <View>
+
         <TextInput
           label="Name"
           placeholder="bike"

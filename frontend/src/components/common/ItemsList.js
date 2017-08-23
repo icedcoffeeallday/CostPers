@@ -13,7 +13,7 @@ class ItemsList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { data: [],
+    this.state = { data: (this.props.data || []),
                    name: '',
                    price: '',
                    img_url: '',
@@ -21,28 +21,24 @@ class ItemsList extends Component {
                    user_id: this.props.userId,
                    category_id: ''
                  };
-
     this.updateItemFunc = this.updateItemFunc.bind(this);
-    this.addItem = this.addItem.bind(this);
-
   }
 
   componentWillMount() {
     var myItem = this;
     axios.get('http://localhost:3000/users/'+this.state.user_id+'/items')
       .then(function(response) {
-        console.log(response);
-        myItem.setState({data: response.data})
+        // console.log("$$$$$$$$$$$$$$");
+        console.log(response.data);
+        var data = myItem.state.data;
+        console.log(data);
+        var newData = data.concat(response.data);
+        console.log(newData);
+        myItem.setState({data: newData});
       })
       .catch(function(error) {
         console.log(error)
       });
-  }
-
-  addItem(item) {
-    var items = this.state.data;
-    items.push(item);
-    this.setState({ data: items });
   }
 
     updateItemFunc(index){
@@ -72,10 +68,7 @@ class ItemsList extends Component {
             <View >
             <View style={styles.contentcolumns} >
             {this.state.data.map((item, index) => {
-
-
               return (
-
                 <View style={styles.rows}>
                   <View style={styles.itemInfoContainer}>
 
@@ -92,7 +85,6 @@ class ItemsList extends Component {
                         costper = {item.costper.costper}
                         item_id = {item.costper.item_id}
                         updateItem={this.updateItemFunc(index)}
-                        newItem={this.addItem(item)}
                   />
                   </View>
                 </View>
