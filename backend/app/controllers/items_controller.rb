@@ -19,9 +19,4 @@ class ItemsController < ApplicationController
     render json: @items.as_json
   end
 
-  def show
-    @user = User.find(params[:user_id])
-
-  end
-
 end

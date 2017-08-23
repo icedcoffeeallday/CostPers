@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Hyperlink } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
@@ -21,6 +21,7 @@ class ItemsList extends Component {
                    user_id: this.props.userId,
                    category_id: ''
                  };
+
     this.updateItemFunc = this.updateItemFunc.bind(this);
     this.addItem = this.addItem.bind(this);
   }
@@ -67,18 +68,22 @@ class ItemsList extends Component {
       return (
       <View style={styles.container}>
         <ScrollView>
+            <View >
             <View style={styles.contentcolumns} >
-
             {this.state.data.map((item, index) => {
+
 
               return (
                 <View style={styles.rows}>
+                  <View style={styles.itemInfoContainer}>
+
                   <Item key={item.id}
                     name={item.name}
                     price={item.price}
                     img_url={item.img_url}
                     star={item.star}
                     user_id={item.user_id}
+                    item_id={item.id}
                     category_id={item.category_id}
                   />
                   <Costper key={item.costper.id}
@@ -90,6 +95,7 @@ class ItemsList extends Component {
                 </View>
               )})}
           </View>
+        </View>
       </ScrollView>
         <View style={styles.footerStyle}>
           <TouchableOpacity onPress={() => Actions.addItem({ userId: this.state.user_id })}>
@@ -109,11 +115,16 @@ const styles = ({
     flex: 1,
   },
   rows: {
-    flexDirection: 'row'
+    flexDirection: 'column',
+    justifyContent: 'space-around'
   },
-  contentcolumns: {
-    flex: 1,
-    flexDirection: 'column'
+  itemInfoContainer: {
+    height: 100,
+    justifyContent: 'space-around',
+    borderColor: '#D3D3D3',
+    borderWidth: 0.5,
+    paddingTop: 20,
+    paddingBottom: 10
   },
   footerStyle: {
     height: 60,
@@ -131,7 +142,6 @@ const styles = ({
     alignItems: 'center',
     justifyContent: 'center'
   }
-
 
 });
 
