@@ -44,7 +44,7 @@ class AddItem extends Component {
       // alert('Item has been added!');
 
       Actions.itemsList({
-        data: this.state.data,
+        // data: this.state.data,
         userId: this.state.userId
       });
     })
