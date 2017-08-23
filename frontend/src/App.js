@@ -77,12 +77,9 @@ class App extends Component {
   // }
 
   render() {
-    console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&');
-    console.log(this.state.userId);
-    console.log(this.state.firstName);
+
     return (
       <Router
-        NavBar={MainNavBar}
         sceneStyle={{ paddingTop: 65 }}
       >
         <Scene key="root">
@@ -91,6 +88,8 @@ class App extends Component {
           component={LoginForm}
           authentication={this.authentication}
           title="CostPers"
+          hideNavBar={true}
+          sceneStyle={{ paddingTop: 21 }}
           initial
           />
 
@@ -100,19 +99,21 @@ class App extends Component {
            component={ItemsList}
            navigationBarStyle={styles.navBar}
            renderBackButton={()=>(null)}
+           hideNavBar={false}
         />
 
         <Scene
             key="addItem"
             component={AddItem}
             title="Add Item"
-            // newItem={this.addNewItem(item)}
+            hideNavBar={false}
         />
 
         <Scene
             key="itemDetails"
             component={ItemDetails}
             title="Item Details"
+            hideNavBar={false}
         />
         </Scene>
       </Router>
