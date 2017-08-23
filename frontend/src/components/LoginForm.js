@@ -36,9 +36,9 @@ class LoginForm extends Component {
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
 
         <View style={styles.logoContainer}>
-          <Image 
+          <Image
           style={styles.logo}
-          source={require('../images/whitelogotransparent.png')} 
+          source={require('../images/whitelogotransparent.png')}
           />
           <Text style={styles.title}>Understand the value of your things.</Text>
 
@@ -92,7 +92,8 @@ const styles = {
   logoContainer: {
     alignItems: 'center',
     flexGrow: 1,
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    paddingTop: 40
   },
   logo: {
     width: 200,
