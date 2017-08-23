@@ -20,21 +20,14 @@ addUse(arg) {
       item_id: arg
     })
     .then(function(response) {
-      console.log(response)
-
       myCostper.props.updateItem(response.data)
-      // myCostper.setState({costper: response.data })
-
 
     })
     .catch(function(response) {
       console.log("broken")
-      console.log(response)
-      console.log(this.state.data)
     })
 
   }
-
 
 
   render() {
