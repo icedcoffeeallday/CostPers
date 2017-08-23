@@ -24,6 +24,7 @@ class ItemsList extends Component {
 
     this.updateItemFunc = this.updateItemFunc.bind(this);
     this.addItem = this.addItem.bind(this);
+
   }
 
   componentWillMount() {
@@ -74,6 +75,7 @@ class ItemsList extends Component {
 
 
               return (
+
                 <View style={styles.rows}>
                   <View style={styles.itemInfoContainer}>
 
@@ -92,6 +94,7 @@ class ItemsList extends Component {
                         updateItem={this.updateItemFunc(index)}
                         newItem={this.addItem(item)}
                   />
+                  </View>
                 </View>
               )})}
           </View>
