@@ -15,8 +15,7 @@
 		"react-native-global-font": "^1.0.1",
 		"react-native-material-bottom-navigation": "^0.5.1",
 		"react-native-router-flux": "^3.41.0",
-		"react-native-vector-icons": "^4.3.0",
-		"react-timeout": "^1.0.1"
+		"react-native-vector-icons": "^4.3.0"
 	},
 	"devDependencies": {
 		"babel-jest": "20.0.3",
