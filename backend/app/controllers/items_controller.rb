@@ -16,12 +16,7 @@ class ItemsController < ApplicationController
       y.cost_per[:costper] <=> x.cost_per[:costper]
     end
 
-
-
-
     render json: @items.as_json
-
-
 
   end
 

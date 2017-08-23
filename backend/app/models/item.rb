@@ -23,7 +23,6 @@ class Item < ApplicationRecord
     img_url: self.img_url,
     star: self.star,
     user_id: self.user_id,
-    category_id: self.category_id,
     created_at: self.created_at,
     updated_at: self.updated_at,
     costper: self.cost_per
