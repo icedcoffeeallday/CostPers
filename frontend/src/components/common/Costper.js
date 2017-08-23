@@ -10,7 +10,7 @@ class Costper extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { costper: this.props.costper }
+    this.state = { costper: this.props.costper}
     // this.addUse = this.addUse.bind(this)
   }
 
