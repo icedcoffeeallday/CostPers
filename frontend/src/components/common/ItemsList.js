@@ -22,7 +22,7 @@ class ItemsList extends Component {
                    category_id: ''
                  };
     this.updateItemFunc = this.updateItemFunc.bind(this)
-
+    
   }
 
   componentWillMount() {
@@ -87,7 +87,7 @@ class ItemsList extends Component {
           </View>
       </ScrollView>
         <View style={styles.footerStyle}>
-          <TouchableOpacity onPress={() => Actions.addItem()}>
+          <TouchableOpacity onPress={() => Actions.addItem({ userId: this.state.user_id })}>
             <View style={styles.footerSubGroup}>
               <Icon size={40} style={{ color: 'white' }} name="add-circle"/>
               <Text style={styles.footerTextStyle}>Add Item</Text>
