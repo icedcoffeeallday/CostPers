@@ -63,7 +63,6 @@ class LoginForm extends Component {
             value={this.state.password}
             onChangeText={password => this.setState({ password })}
             secureTextEntry
-            ref={(input) => this.passwordInput = input}
           />
           </CardSection>
 

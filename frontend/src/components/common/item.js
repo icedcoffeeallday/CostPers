@@ -7,7 +7,7 @@ class Item extends Component {
     super(props);
 
     const { user_id, item_id } = props;
-
+    
     this.state = {
       userId: user_id,
       itemId: item_id
@@ -16,9 +16,9 @@ class Item extends Component {
 
   render() {
     return (
-        <View>
+        <View style={styles.itemNameContainer}>
           <Text
-            style={styles.textStyle}
+            style={styles.itemNameDisplay}
             onPress={() =>
             Actions.itemDetails(
               { userId: this.state.userId,
@@ -32,14 +32,15 @@ class Item extends Component {
   }
 }
 
-const styles = {
-  textStyle: {
-    color: '#0000FF',
-    fontSize: 18
+const styles = ({
+  itemNameDisplay: {
+    fontSize: 32,
+    justifyContent: 'center',
+    color: '#16795B'
+  },
+  itemNameContainer: {
+    padding: 20
   }
-  // container: {
-  //   flex:1,
-};
-
+});
 
 export { Item };

@@ -69,15 +69,15 @@ class ItemsList extends Component {
 
     render() {
       return (
-
+        <View style={styles.container}>
         <ScrollView>
+            <View >
             <View style={styles.contentcolumns} >
-
             {this.state.data.map((item, index) => {
-
               return(
-
                 <View style={styles.rows}>
+                  <View style={styles.itemInfoContainer}>
+               
                   <Item key={item.id}
                     name={item.name}
                     price={item.price}
@@ -92,11 +92,18 @@ class ItemsList extends Component {
                         item_id = {item.costper.item_id}
                         updateItem={this.updateItemFunc(index)}
                   />
-
+                  </View>
                 </View>
               )})}
           </View>
       </ScrollView>
+        <View style={styles.footerStyle}>
+          <Text>
+            <Icon name="add-circle" size={30} style={{color: 'black'}}/>
+          </Text>
+        </View>
+      </View>
+
       );
     }
 }
@@ -105,14 +112,21 @@ const styles = ({
   container: {
     flex: 1,
   },
-  rows: {
-    flexDirection: 'row'
+  footerStyle: {
+    height: 56,
+    position: 'relative',
+    backgroundColor: '#16795B'
   },
-
-  contentcolumns: {
-    flex: 1,
-    flexDirection: 'column'
+  rows: {
+    flexDirection: 'column',
+    justifyContent: 'space-around'
+  },
+  itemInfoContainer: {
+    height: 90,
+    justifyContent: 'space-around',
+    borderColor: '#D3D3D3',
+    borderWidth: 1,
+    paddingTop: 15
   }
-
 });
 export { ItemsList };
