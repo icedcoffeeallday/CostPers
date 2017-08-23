@@ -69,9 +69,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&');
-    console.log(this.state.userId);
-    console.log(this.state.firstName);
+
     return (
 
       <Router
