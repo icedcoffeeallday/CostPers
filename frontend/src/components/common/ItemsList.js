@@ -72,9 +72,11 @@ class ItemsList extends Component {
               )})}
           </View>
       </ScrollView>
-      <View style={styles.footerStyle}>
-        <Text>Footer here</Text>
-      </View> 
+        <View style={styles.footerStyle}>
+          <Text>
+            <Icon name="add-circle" size={30} style={{color: 'black'}}/>
+          </Text>
+        </View>
       </View>
 
       );
@@ -88,18 +90,18 @@ const styles = ({
   footerStyle: {
     height: 56,
     position: 'relative',
-    backgroundColor: '#16795B',
-    flexGrow: 1
+    backgroundColor: '#16795B'
   },
   rows: {
     flexDirection: 'column',
     justifyContent: 'space-around'
   },
   itemInfoContainer: {
-    height: 100,
+    height: 90,
     justifyContent: 'space-around',
     borderColor: '#D3D3D3',
-    borderWidth: 1
+    borderWidth: 1,
+    paddingTop: 15
   }
 });
 export { ItemsList };

@@ -3,7 +3,6 @@ import { AsyncStorage, Text, View, Linking, Image, TextInput, TouchableOpacity, 
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 import { Button, Card, CardSection, InputField, Spinner, ItemsList, Header } from './common';
-// import LoginFormFields from './LoginFormFields';
 
 class LoginForm extends Component {
 
@@ -75,30 +74,6 @@ class LoginForm extends Component {
         </View>
 
       </KeyboardAvoidingView>
-      // <Card >
-      //   <CardSection>
-          // <TouchableOpacity style={styles.buttonContainer}>
-          // <Text style={styles.buttonText}>Log in</Text>
-          // </TouchableOpacity>
-          // <InputField
-          //   placeholder="Email"
-          //   label="Email"
-          //   value={this.state.email}
-          //   onChangeText={email => this.setState({ email })}
-          // />
-      //   </CardSection>
-
-      //   <CardSection>
-      //   </CardSection>
-
-      //   <Text style={styles.errorTextStyle}>
-      //     {this.props.error}
-      //   </Text>
-
-      //   <CardSection>
-      //     {this.renderButton()}
-      //   </CardSection>
-      // </Card>
     );
   }
 }
