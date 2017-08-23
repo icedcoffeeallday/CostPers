@@ -10,8 +10,7 @@ class Costper extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { costper: this.props.costper,
-                    toggle: false }
+    this.state = { costper: this.props.costper }
     // this.addUse = this.addUse.bind(this)
   }
 
@@ -21,8 +20,7 @@ addUse(arg) {
       item_id: arg
     })
     .then(function(response) {
-      myCostper.setState({costper: response.data,
-                          toggle: !myCostper.state.toggle})
+      myCostper.setState({costper: response.data})
       myCostper.props.updateItem(response.data)
     })
     .catch(function(response) {
@@ -42,10 +40,7 @@ addUse(arg) {
             <Text style={styles.perUseText}> per use</Text>
           </View>
           <View style={styles.buttonPlacement}>
-            <UseButton 
-            onPress={() => this.addUse(this.props.item_id)}
-            toggle={this.state.toggle}
-            />
+            <UseButton onPress={() => this.addUse(this.props.item_id)} />
           </View>
         </View>
       </View>
