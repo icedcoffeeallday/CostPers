@@ -36,10 +36,6 @@ class ItemDetails extends Component {
   }
 
   render() {
-    console.log('*********************************')
-    console.log(this.state.userId);
-    console.log(this.state.itemId);
-    console.log(this.state.price);
     return (
       <View>
         <Card>
@@ -52,6 +48,10 @@ class ItemDetails extends Component {
 
         <Card>
           <Text>Original price: ${this.state.price}</Text>
+        </Card>
+
+        <Card>
+          <Text>Star</Text>
         </Card>
 
         <Card>
