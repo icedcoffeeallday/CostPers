@@ -87,28 +87,12 @@ class ItemsList extends Component {
           </View>
       </ScrollView>
         <View style={styles.footerStyle}>
-            <TouchableOpacity onPress={() => null}>
-              <View style={styles.footerSubGroup}>
-                <Icon size={38} style={{ color: 'white' }} name="home" />
-                <Text style={styles.footerTextStyle}>Home</Text>
-              </View>
-            </TouchableOpacity>
-
-
-            <TouchableOpacity onPress={() => Actions.addItem()}>
-              <View style={styles.footerSubGroup}>
-                <Icon size={40} style={{ color: 'white' }} name="add-circle"/>
-                <Text style={styles.footerTextStyle}>Add Item</Text>
-              </View>
-            </TouchableOpacity>
-
-
-            <TouchableOpacity onPress={() => null}>
-              <View style={styles.footerSubGroup}>
-                <Icon size={38} style={{ color: 'white' }} name="exit-to-app" />
-                <Text style={styles.footerTextStyle}>Log Out</Text>
-              </View>
-            </TouchableOpacity>
+          <TouchableOpacity onPress={() => Actions.addItem()}>
+            <View style={styles.footerSubGroup}>
+              <Icon size={40} style={{ color: 'white' }} name="add-circle"/>
+              <Text style={styles.footerTextStyle}>Add Item</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
       );
