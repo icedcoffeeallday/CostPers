@@ -21,8 +21,8 @@ class ItemsList extends Component {
                    user_id: this.props.userId,
                    category_id: ''
                  };
-    this.updateItemFunc = this.updateItemFunc.bind(this)
-    
+    this.updateItemFunc = this.updateItemFunc.bind(this);
+
   }
 
   componentWillMount() {
