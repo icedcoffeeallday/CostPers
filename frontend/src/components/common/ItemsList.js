@@ -22,7 +22,7 @@ class ItemsList extends Component {
                    category_id: ''
                  };
     this.updateItemFunc = this.updateItemFunc.bind(this)
-    
+
   }
 
   componentWillMount() {
@@ -67,7 +67,7 @@ class ItemsList extends Component {
               return(
                 <View style={styles.rows}>
                   <View style={styles.itemInfoContainer}>
-               
+
                   <Item key={item.id}
                     name={item.name}
                     price={item.price}
@@ -116,7 +116,7 @@ const styles = ({
     borderWidth: 0.5,
     paddingTop: 20,
     paddingBottom: 10
-  }
+  },
   footerStyle: {
     height: 60,
     position: 'relative',
