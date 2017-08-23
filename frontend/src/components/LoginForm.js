@@ -40,7 +40,7 @@ class LoginForm extends Component {
           style={styles.logo}
           source={require('../images/whitelogotransparent.png')}
           />
-          <Text style={styles.title}>Understand the value of your things.</Text>
+          <Text style={styles.title}>Understand the value of your things</Text>
 
           <Card>
           <CardSection>
@@ -93,7 +93,7 @@ const styles = {
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'flex-start',
-    paddingTop: 40
+    paddingTop: 120
   },
   logo: {
     width: 200,
