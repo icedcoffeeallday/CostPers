@@ -72,19 +72,28 @@ class ItemsList extends Component {
           </View>
       </ScrollView>
         <View style={styles.footerStyle}>
-
             <TouchableOpacity onPress={() => null}>
-              <Icon size={40} style={{ color: 'white' }} name="home" />
+              <View style={styles.footerSubGroup}>
+                <Icon size={40} style={{ color: 'white' }} name="home" />
+                <Text style={styles.footerTextStyle}>Home</Text>
+              </View>
             </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => Actions.addItem()}>
-            <Icon size={50} style={{ color: 'white' }} name="add-circle" />
-          </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => null}>
-            <Icon size={40} style={{ color: 'white' }} name="exit-to-app" />
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => Actions.addItem()}>
+              <View style={styles.footerSubGroup}>
+                <Icon size={42} style={{ color: 'white' }} name="add-circle"/>
+                <Text style={styles.footerTextStyle}>Add Item</Text>
+              </View>
+            </TouchableOpacity>
 
+
+            <TouchableOpacity onPress={() => null}>
+              <View style={styles.footerSubGroup}>
+                <Icon size={40} style={{ color: 'white' }} name="exit-to-app" />
+                <Text style={styles.footerTextStyle}>Log Out</Text>
+              </View>
+            </TouchableOpacity>
         </View>
       </View>
       );
@@ -103,13 +112,23 @@ const styles = ({
     flexDirection: 'column'
   },
   footerStyle: {
-    height: 56,
+    height: 60,
     position: 'relative',
     backgroundColor: "#16795B",
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center'
+  },
+  footerTextStyle: {
+    color: 'white',
+    fontSize: 13
+  },
+  footerSubGroup: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center'
   }
+
 
 });
 
