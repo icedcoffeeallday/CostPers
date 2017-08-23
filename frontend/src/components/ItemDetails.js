@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import axios from 'axios';
 import { Card } from './common';
+import Star from './Star';
 
 class ItemDetails extends Component {
   constructor(props) {
     super(props);
 
-    const { userId, itemId } = props;
+    const { userId, itemId, star } = props;
 
     this.state = {
       userId: userId,
@@ -15,7 +16,8 @@ class ItemDetails extends Component {
       itemName: '',
       uses: '',
       price: '',
-      costPer: ''
+      costPer: '',
+      star: ''
     };
   }
 
@@ -27,7 +29,8 @@ class ItemDetails extends Component {
           itemName: response.data.name,
           uses: response.data.used_times,
           price: response.data.price,
-          costPer: response.data.costper.costper
+          costPer: response.data.costper.costper,
+          star: response.data.star
         }
       );
       console.log(response);
@@ -36,6 +39,7 @@ class ItemDetails extends Component {
   }
 
   render() {
+    console.log(this.state.star);
     return (
       <View>
         <Card>
@@ -51,7 +55,11 @@ class ItemDetails extends Component {
         </Card>
 
         <Card>
-          <Text>Star</Text>
+          <Star
+            userId={this.state.userId}
+            itemId={this.state.itemId}
+            star={this.state.star}
+          />
         </Card>
 
         <Card>
