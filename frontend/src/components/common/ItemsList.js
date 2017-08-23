@@ -10,17 +10,6 @@ import LoginForm from '../LoginForm';
 
 
 class ItemsList extends Component {
-  static renderRightButton = ({ iconName }) => {
-    return (
-      <View>
-        <TouchableOpacity onPress={() => Actions.addItem()}>
-          <Icon size={20} style={{ color: 'black' }} name={iconName} />
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  // const addItemIcon=(<Icon name="add-circle" size={30} color="FFFFFF"/>)
 
   constructor(props) {
     super(props);
@@ -74,7 +63,7 @@ class ItemsList extends Component {
         <View style={styles.footerStyle}>
             <TouchableOpacity onPress={() => null}>
               <View style={styles.footerSubGroup}>
-                <Icon size={40} style={{ color: 'white' }} name="home" />
+                <Icon size={38} style={{ color: 'white' }} name="home" />
                 <Text style={styles.footerTextStyle}>Home</Text>
               </View>
             </TouchableOpacity>
@@ -82,7 +71,7 @@ class ItemsList extends Component {
 
             <TouchableOpacity onPress={() => Actions.addItem()}>
               <View style={styles.footerSubGroup}>
-                <Icon size={42} style={{ color: 'white' }} name="add-circle"/>
+                <Icon size={40} style={{ color: 'white' }} name="add-circle"/>
                 <Text style={styles.footerTextStyle}>Add Item</Text>
               </View>
             </TouchableOpacity>
@@ -90,7 +79,7 @@ class ItemsList extends Component {
 
             <TouchableOpacity onPress={() => null}>
               <View style={styles.footerSubGroup}>
-                <Icon size={40} style={{ color: 'white' }} name="exit-to-app" />
+                <Icon size={38} style={{ color: 'white' }} name="exit-to-app" />
                 <Text style={styles.footerTextStyle}>Log Out</Text>
               </View>
             </TouchableOpacity>
@@ -125,8 +114,7 @@ const styles = ({
   },
   footerSubGroup: {
     alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center'
+    justifyContent: 'center'
   }
 
 
