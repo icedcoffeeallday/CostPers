@@ -28,12 +28,6 @@ class ItemsList extends Component {
     var myItem = this;
     axios.get('http://localhost:3000/users/'+this.state.user_id+'/items')
       .then(function(response) {
-        // console.log("$$$$$$$$$$$$$$");
-        // console.log(response.data);
-        // var data = myItem.state.data;
-        // console.log(data);
-        // var newData = data.concat(response.data);
-        // console.log(newData);
         myItem.setState({ data: response.data });
       })
       .catch(function(error) {

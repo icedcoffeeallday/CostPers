@@ -30,21 +30,8 @@ class AddItem extends Component {
       name: this.state.name,
       price: this.state.price
     })
-    .then((response) => {
-      // thisItem.props.newItem(response.data);
-      console.log('***************')
-      console.log(response.data);
-      this.setState({data: response.data });
-      // Actions.ItemsList({
-      //   data: response.data
-      // });
-      // console.log(response.data);
-      // console.log(response);
-      // Actions.pop();
-      // alert('Item has been added!');
-
+    .then(() => {
       Actions.itemsList({
-        // data: this.state.data,
         userId: this.state.userId
       });
     })
@@ -53,14 +40,6 @@ class AddItem extends Component {
       }
     ));
   }
-  //
-  // redirectToItemsList = () => {
-  //   if (this.state.data.length > 1) {
-  //     Actions.ItemsList({
-  //       data: this.state.data
-  //     });
-  //   }
-  // }
 
   render() {
     return (
