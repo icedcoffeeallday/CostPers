@@ -4,22 +4,12 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
 import {Item} from './';
-  // If issues with Item, try adding filename back to from path
 import Costper from './Costper';
 import ContainerSection from '../ContainerSection';
 import LoginForm from '../LoginForm';
 
 
 class ItemsList extends Component {
-  static renderRightButton = ({ iconName, userId }) => {
-    return (
-      <View>
-        <TouchableOpacity onPress={() => Actions.addItem({userId: userId})}>
-          <Icon size={20} style={{ color: 'black' }} name={iconName} />
-        </TouchableOpacity>
-      </View>
-    );
-  }
 
   constructor(props) {
     super(props);
@@ -69,7 +59,7 @@ class ItemsList extends Component {
 
     render() {
       return (
-
+      <View style={styles.container}>
         <ScrollView>
             <View style={styles.contentcolumns} >
 
@@ -96,6 +86,15 @@ class ItemsList extends Component {
               )})}
           </View>
       </ScrollView>
+        <View style={styles.footerStyle}>
+          <TouchableOpacity onPress={() => Actions.addItem()}>
+            <View style={styles.footerSubGroup}>
+              <Icon size={40} style={{ color: 'white' }} name="add-circle"/>
+              <Text style={styles.footerTextStyle}>Add Item</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
       );
     }
 }
@@ -107,11 +106,29 @@ const styles = ({
   rows: {
     flexDirection: 'row'
   },
-
   contentcolumns: {
     flex: 1,
     flexDirection: 'column'
+  },
+  footerStyle: {
+    height: 60,
+    position: 'relative',
+    backgroundColor: "#16795B",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  footerTextStyle: {
+    color: 'white',
+    fontSize: 13
+  },
+  footerSubGroup: {
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 
+
 });
+
+
 export { ItemsList };

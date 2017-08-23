@@ -90,9 +90,8 @@ class App extends Component {
              title="CostPers"
              component={ItemsList}
              navigationBarStyle={styles.navBar}
-             onRight={() => null}
-             rightButtonIconStyle={{ width: 30, height: 30 }}
              iconName="add"
+             renderBackButton={()=>(null)}
           />
           <Scene
             key="addItem"
