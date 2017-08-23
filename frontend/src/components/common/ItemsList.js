@@ -22,19 +22,26 @@ class ItemsList extends Component {
                    category_id: ''
                  };
     this.updateItemFunc = this.updateItemFunc.bind(this);
-
+    this.addItem = this.addItem.bind(this);
   }
 
   componentWillMount() {
     var myItem = this;
     axios.get('http://localhost:3000/users/'+this.state.user_id+'/items')
       .then(function(response) {
+        console.log(response);
         myItem.setState({data: response.data})
       })
       .catch(function(error) {
         console.log(error)
       });
-    }
+  }
+
+  addItem(item) {
+    var items = this.state.data;
+    items.push(item);
+    this.setState({ data: items });
+  }
 
     updateItemFunc(index){
       var thisItemsList = this
@@ -52,7 +59,6 @@ class ItemsList extends Component {
     sortList() {
       var newList = this.state.data.sort(function(a,b) {
         return b.costper.costper - a.costper.costper
-
       })
       this.setState({ data: newList })
     }
@@ -65,8 +71,7 @@ class ItemsList extends Component {
 
             {this.state.data.map((item, index) => {
 
-              return(
-
+              return (
                 <View style={styles.rows}>
                   <Item key={item.id}
                     name={item.name}
@@ -80,8 +85,8 @@ class ItemsList extends Component {
                         costper = {item.costper.costper}
                         item_id = {item.costper.item_id}
                         updateItem={this.updateItemFunc(index)}
+                        newItem={this.addItem(item)}
                   />
-
                 </View>
               )})}
           </View>

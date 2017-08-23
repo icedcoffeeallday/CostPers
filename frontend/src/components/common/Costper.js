@@ -20,7 +20,9 @@ addUse(arg) {
       item_id: arg
     })
     .then(function(response) {
+      console.log("%%%%%%%%%%%%%%%%%%")
       console.log(response)
+      console.log(response.data)
       myCostper.setState({costper: response.data})
       myCostper.props.updateItem(response.data)
       // myCostper.setState({costper: response.data })

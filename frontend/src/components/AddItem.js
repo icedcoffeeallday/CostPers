@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
 class AddItem extends Component {
@@ -10,6 +11,7 @@ class AddItem extends Component {
       name: '',
       price: ''
     };
+    this.insertItem = this.insertItem.bind(this);
   }
 
   handleName = (text) => {
@@ -25,11 +27,14 @@ class AddItem extends Component {
       name: this.state.name,
       price: this.state.price
     })
-    .then(() => {
+    .then((response) => {
+      this.props.newItem(response.data);
+      console.log(response.data);
+      console.log(response);
+      // Actions.pop();
       alert('Item has been added!');
     })
     .catch(() => {
-
       alert('There was an issue adding your item.');
     });
   }
