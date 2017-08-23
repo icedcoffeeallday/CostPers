@@ -2,14 +2,15 @@ import React from 'react';
 import { TextInput, View, Text } from 'react-native';
 
 const InputField = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
-  const { inputStyle, labelStyle, containerStyle } = styles;
+  const { inputStyle, labelStyle, containerStyle, color } = styles;
 
   return (
-    <View style={containerStyle}>
-      <Text style={labelStyle}>{label}</Text>
+    <View style={styles.input}>
       <TextInput
         autoCapitalize="none"
+        autoCorrect={false}
         placeholder={placeholder}
+        placeholderTextColor="#D3D3D3"
         autoCorrect={false}
         style={inputStyle}
         value={value}
@@ -21,24 +22,14 @@ const InputField = ({ label, value, onChangeText, placeholder, secureTextEntry }
 };
 
 const styles = {
-  inputStyle: {
-    color: '#000',
-    paddingRight: 5,
-    paddingLeft: 5,
-    fontSize: 18,
-    lineHeight: 23, //line between each line of text
-    flex: 7
-  },
-  labelStyle: {
-    fontSize: 18,
-    paddingLeft: 20,
-    flex: 3
-  },
-  containerStyle: {
+  input: {
     height: 40,
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center'
+    width: 300,
+    backgroundColor: 'rgba(225,225,225,0.2)',
+    marginBottom: 10,
+    color: '#FFF',
+    paddingHorizontal: 10,
+    justifyContent: 'center'
   }
 };
 

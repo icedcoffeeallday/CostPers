@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
 
-
 class Item extends Component {
   constructor(props) {
     super(props);

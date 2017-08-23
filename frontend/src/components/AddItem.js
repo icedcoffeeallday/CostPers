@@ -1,22 +1,37 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import axios from 'axios';
 
 class AddItem extends Component {
-  state = {
-    name: '',
-    price: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId: this.props.userId,
+      name: '',
+      price: ''
+    };
   }
 
   handleName = (text) => {
-    this.setState({ name: text})
+    this.setState({ name: text });
   }
 
   handlePrice = (text) => {
-    this.setState({ price: text })
+    this.setState({ price: text });
   }
 
-  insertItem = (name, price) => {
-    alert ('name: ' + name + ' price: $' + price)
+  insertItem = () => {
+    axios.post('http://localhost:3000/users/' + this.state.userId + '/items', {
+      name: this.state.name,
+      price: this.state.price
+    })
+    .then(() => {
+      alert('Item has been added!');
+    })
+    .catch(() => {
+    
+      alert('There was an issue adding your item.');
+    });
   }
 
   render() {
@@ -25,27 +40,26 @@ class AddItem extends Component {
         <TextInput
           label="Name"
           placeholder="bike"
-          style = {styles.input}
-               placeholder = "Example: Bike"
-               placeholderTextColor = "#6A6B5F"
-               autoCapitalize = "none"
-          onChangeText = {this.handleName}
+          style={styles.input}
+          placeholder="Example: Bike"
+          placeholderTextColor="#6A6B5F"
+          autoCapitalize="none"
+          onChangeText={this.handleName}
         />
         <TextInput
           label="Price"
           placeholder="Example: $100"
-          style = {styles.input}
-               placeholderTextColor = "#6A6B5F"
-          onChangeText = {this.handlePrice}
+          style={styles.input}
+          placeholderTextColor="#6A6B5F"
+          onChangeText={this.handlePrice}
         />
-        <TouchableOpacity
-          style = {styles.submitButton}>
-        <Text style = {styles.submitButtonText}
-              onPress = {
-                () =>this.insertItem(this.state.name, this.state.price)
-              }
+        <TouchableOpacity style={styles.submitButton}>
+        <Text
+          style={styles.submitButtonText}
+          onPress={() => this.insertItem()}
         >
-        Add It! </Text>
+          Add It!
+        </Text>
         </TouchableOpacity>
       </View>
     );
@@ -71,8 +85,8 @@ const styles = StyleSheet.create({
       margin: 15,
       height: 40,
    },
-   submitButtonText:{
+   submitButtonText: {
       color: 'white',
       textAlign: 'center'
    }
-})
+});

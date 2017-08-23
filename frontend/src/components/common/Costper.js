@@ -11,22 +11,24 @@ class Costper extends Component {
     super(props)
 
     this.state = { costper: this.props.costper }
+    // this.addUse = this.addUse.bind(this)
   }
 
 addUse(arg) {
   var myCostper = this
-  var url = "http://localhost:3000/items/"+arg+"/uses"
-  console.log(url)
     axios.post("http://localhost:3000/items/"+arg+"/uses", {
       item_id: arg
     })
     .then(function(response) {
-      myCostper.setState({costper: response.data })
+      myCostper.props.updateItem(response.data)
+
     })
-    .catch(function (response) {
-      console.log('broken');
-    });
+    .catch(function(response) {
+      console.log("broken")
+    })
+
   }
+
 
   render() {
 

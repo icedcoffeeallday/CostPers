@@ -27,6 +27,7 @@ class App extends Component {
       userId: '',
       firstName: '',
       lastName: '',
+      itemId: '',
       auth: false,
     };
     this.authentication = this.authentication.bind(this);
@@ -42,7 +43,6 @@ class App extends Component {
   }
 
   authentication(email, password) {
-
     axios.post('http://localhost:3000/login', {
         email: email,
         password: password
@@ -86,6 +86,7 @@ class App extends Component {
           title="CostPers"
           initial
           />
+
         <Scene
            key="itemsList"
            title="CostPers"
@@ -114,6 +115,6 @@ const styles = {
     width: 50,
     height: 50
   }
-}
+};
 
 export default App;

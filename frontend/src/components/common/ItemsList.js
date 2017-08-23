@@ -11,10 +11,10 @@ import LoginForm from '../LoginForm';
 
 
 class ItemsList extends Component {
-  static renderRightButton = ({ iconName }) => {
+  static renderRightButton = ({ iconName, userId }) => {
     return (
       <View>
-        <TouchableOpacity onPress={() => Actions.addItem()}>
+        <TouchableOpacity onPress={() => Actions.addItem({userId: userId})}>
           <Icon size={20} style={{ color: 'black' }} name={iconName} />
         </TouchableOpacity>
       </View>
@@ -31,6 +31,8 @@ class ItemsList extends Component {
                    user_id: this.props.userId,
                    category_id: ''
                  };
+    this.updateItemFunc = this.updateItemFunc.bind(this)
+
   }
 
   componentWillMount() {
@@ -44,14 +46,37 @@ class ItemsList extends Component {
       });
     }
 
-    render() {
+    updateItemFunc(index){
+      var thisItemsList = this
 
+      return function(newCostper) {
+        var data = thisItemsList.state.data
+        var oldItem = data[index]
+        oldItem.costper.costper = newCostper
+        data[index] = oldItem
+        thisItemsList.setState({ data: data })
+        thisItemsList.sortList()
+      }
+    }
+
+    sortList() {
+      var newList = this.state.data.sort(function(a,b) {
+        return b.costper.costper - a.costper.costper
+
+      })
+      this.setState({ data: newList })
+    }
+
+    render() {
       return (
 
         <ScrollView>
             <View style={styles.contentcolumns} >
-            {this.state.data.map((item) => {
+
+            {this.state.data.map((item, index) => {
+
               return(
+
                 <View style={styles.rows}>
                   <Item key={item.id}
                     name={item.name}
@@ -65,6 +90,7 @@ class ItemsList extends Component {
                   <Costper key={item.costper.id}
                         costper = {item.costper.costper}
                         item_id = {item.costper.item_id}
+                        updateItem={this.updateItemFunc(index)}
                   />
 
                 </View>
