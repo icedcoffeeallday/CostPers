@@ -13,15 +13,19 @@ class Item < ApplicationRecord
      end
      newcostper
      { id: self.id.to_s + self.name, costper: newcostper, item_id: self.id}
+   end
 
+   def used_times
+     self.uses.count
    end
 
    def as_json
      {
      id: self.id,
      name: self.name,
-     price: self.price,
+     price: self.price.round.to_s,
      img_url: self.img_url,
+     used_times: self.used_times,
      star: self.star,
      user_id: self.user_id,
      category_id: self.category_id,

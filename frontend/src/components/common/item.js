@@ -4,13 +4,31 @@ import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
 
 
 class Item extends Component {
+  constructor(props) {
+    super(props);
+
+    const { user_id, item_id } = props;
+
+    this.state = {
+      userId: user_id,
+      itemId: item_id
+    };
+  }
+
   render() {
     return (
-
         <View>
-          <Text style={styles.textStyle} onPress={() => Actions.addItem()}>{this.props.name}</Text>
+          <Text
+            style={styles.textStyle}
+            onPress={() =>
+            Actions.itemDetails(
+              { userId: this.state.userId,
+                itemId: this.state.itemId }
+              )}
+          >
+            {this.props.name}
+          </Text>
         </View>
-
     );
   }
 }

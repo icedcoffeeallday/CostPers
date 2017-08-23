@@ -59,6 +59,7 @@ class ItemsList extends Component {
                     img_url={item.img_url}
                     star={item.star}
                     user_id={item.user_id}
+                    item_id={item.id}
                     category_id={item.category_id}
                   />
                   <Costper key={item.costper.id}
