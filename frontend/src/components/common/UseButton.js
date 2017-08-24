@@ -6,20 +6,20 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const UseButton = ({onPress, toggle, children}) => {
+const UseButton = ({onPress, children}) => {
 
-  const buttonToggleColor = toggle?'purple':'gray';
+  // const buttonToggleColor = toggle?'purple':'gray';
 
   return(
     <View style={styles.buttonContainer}>
-      <TouchableOpacity 
+      <TouchableOpacity
         onPress={onPress}
          >
           <View>
-            <Icon 
-            name="check-circle" 
-            size={40} 
-            style={{color: buttonToggleColor}} 
+            <Icon
+            name="check-circle"
+            size={40}
+            style={{color: 'gray'}}
           />
           </View>
       </TouchableOpacity>
@@ -38,4 +38,3 @@ const styles = ({
     marginBottom: 15
   }
 });
-

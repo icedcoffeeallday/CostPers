@@ -102,10 +102,9 @@ const styles= ({
     alignItems: 'center',
     marginTop: 20,
     height: 200,
-    width: 300,
+    width: 300
   },
   itemNameText: {
-    adjustsFontSizeToFit: true,
     fontSize: 50,
     marginTop: 50,
     marginRight: 15,
@@ -113,7 +112,8 @@ const styles= ({
     width: 290,
     color: '#16795B',
     textAlign: 'center',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    adjustsFontSizeToFit: true
   },
   timesUsedContainer: {
     flexDirection: 'row',
@@ -159,13 +159,13 @@ const styles= ({
     marginLeft: 10,
     fontSize: 32,
     textAlign: 'left',
+    adjustsFontSizeToFit: true
   },
   bigCostperContainer: {
     height: 100,
   },
   currentCostperContainer: {
     flexDirection: 'row',
-    fontSize: 24,
     height: 30,
   },
   currentCostperText: {

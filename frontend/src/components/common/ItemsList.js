@@ -57,7 +57,7 @@ class ItemsList extends Component {
         <View style={styles.container}>
         <ScrollView>
           <View>
-            <Text style={styles.favoriteStyle}> Favorites </Text>
+            <Text style={styles.favoriteStyle}> FAVORITES </Text>
               <View style={styles.contentcolumns} >
               {this.state.starred.map((item, index) => {
                 return(
@@ -83,7 +83,7 @@ class ItemsList extends Component {
                 )})}
             </View>
 
-            <Text style={styles.favoriteStyle}> Everything Else </Text>
+            <Text style={styles.favoriteStyle}> EVERYTHING ELSE </Text>
             <View style={styles.contentcolumns} >
             {this.state.non_starred.map((item, index) => {
               return(
@@ -155,10 +155,11 @@ const styles = ({
     justifyContent: 'center'
   },
   favoriteStyle: {
-    fontSize: 30,
+    fontSize: 13,
     paddingTop: 10,
     paddingBottom: 5,
-    color: 'gray'
+    color: '#2f4f4f',
+    backgroundColor: '#ffef99'
   }
 
 });
