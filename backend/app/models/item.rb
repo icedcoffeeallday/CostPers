@@ -11,7 +11,7 @@ class Item < ApplicationRecord
        newcostper = self.price.round
      end
      newcostper
-     { id: self.id.to_s + self.name, costper: newcostper, item_id: self.id}
+     { cpid: self.id.to_s + self.name, costper: newcostper, item_id: self.id}
    end
 
    def used_times

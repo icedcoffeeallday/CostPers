@@ -13,7 +13,7 @@ class UsesController < ApplicationController
   def create
     p params
     @item = Item.find(params[:item_id])
-    # @items = Item.all
+    p params
     @use = @item.uses.create(item_id: @item.id)
     @uses = @item.uses.count
     @costper = (@item.price / @uses).round

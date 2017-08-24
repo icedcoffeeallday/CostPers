@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Hyperlink } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
 import {Item} from './';
+  // If issues with Item, try adding filename back to from path
 import Costper from './Costper';
 import ContainerSection from '../ContainerSection';
 import LoginForm from '../LoginForm';
 
 
 class ItemsList extends Component {
+  static renderRightButton = ({ iconName, userId }) => {
+    return (
+      <View>
+        <TouchableOpacity onPress={() => Actions.addItem({userId: userId})}>
+          <Icon size={20} style={{ color: 'black' }} name={iconName} />
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
   constructor(props) {
     super(props);
-    this.state = { data: [],
-                   name: '',
-                   price: '',
-                   img_url: '',
-                   star: '',
+    this.state = {starred: [],
+                  non_starred: [],
+                  //  name: '',
+                  //  price: '',
+                  //  img_url: '',
+                  //  star: '',
                    user_id: this.props.userId,
-                   category_id: ''
+                  //  category_id: ''
                  };
     this.updateItemFunc = this.updateItemFunc.bind(this)
 
@@ -29,7 +40,8 @@ class ItemsList extends Component {
     var myItem = this;
     axios.get('http://localhost:3000/users/'+this.state.user_id+'/items')
       .then(function(response) {
-        myItem.setState({data: response.data})
+        console.log(response)
+        myItem.setState({starred: response.data.starred, non_starred: response.data.non_starred})
       })
       .catch(function(error) {
         console.log(error)
@@ -59,14 +71,35 @@ class ItemsList extends Component {
 
     render() {
       return (
-      <View style={styles.container}>
         <ScrollView>
-            <View >
+            <Text> Favorites </Text>
+              <View style={styles.contentcolumns} >
+              {this.state.starred.map((item, index) => {
+                return(
+                  <View style={styles.rows}>
+                    <Item key={item.id}
+                      name={item.name}
+                      price={item.price}
+                      img_url={item.img_url}
+                      star={item.star}
+                      user_id={item.user_id}
+                      category_id={item.category_id}
+                    />
+
+                    <Costper key={item.costper.cpid}
+                      costper={item.costper.costper}
+                      item_id={item.costper.item_id}
+                      updateItem={this.updateItemFunc(index)}
+                    />
+                  </View>
+                )})}
+            </View>
+
+            <Text> Everything Else </Text>
             <View style={styles.contentcolumns} >
-            {this.state.data.map((item, index) => {
+            {this.state.non_starred.map((item, index) => {
               return(
                 <View style={styles.rows}>
-                  <View style={styles.itemInfoContainer}>
 
                   <Item key={item.id}
                     name={item.name}
@@ -74,29 +107,17 @@ class ItemsList extends Component {
                     img_url={item.img_url}
                     star={item.star}
                     user_id={item.user_id}
-                    item_id={item.id}
                     category_id={item.category_id}
                   />
-                  <Costper key={item.costper.id}
-                        costper = {item.costper.costper}
-                        item_id = {item.costper.item_id}
-                        updateItem={this.updateItemFunc(index)}
+                  <Costper key={item.costper.cpid }
+                    costper = {item.costper.costper}
+                    item_id = {item.costper.item_id}
+                    updateItem={this.updateItemFunc(index)}
                   />
-                  </View>
                 </View>
               )})}
           </View>
-        </View>
       </ScrollView>
-        <View style={styles.footerStyle}>
-          <TouchableOpacity onPress={() => Actions.addItem({ userId: this.state.user_id })}>
-            <View style={styles.footerSubGroup}>
-              <Icon size={40} style={{ color: 'white' }} name="add-circle"/>
-              <Text style={styles.footerTextStyle}>Add Item</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
       );
     }
 }
@@ -106,35 +127,13 @@ const styles = ({
     flex: 1,
   },
   rows: {
-    flexDirection: 'column',
-    justifyContent: 'space-around'
+    flexDirection: 'row'
   },
-  itemInfoContainer: {
-    height: 100,
-    justifyContent: 'space-around',
-    borderColor: '#D3D3D3',
-    borderWidth: 0.5,
-    paddingTop: 20,
-    paddingBottom: 10
-  },
-  footerStyle: {
-    height: 60,
-    position: 'relative',
-    backgroundColor: "#16795B",
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
-  footerTextStyle: {
-    color: 'white',
-    fontSize: 13
-  },
-  footerSubGroup: {
-    alignItems: 'center',
-    justifyContent: 'center'
+
+  contentcolumns: {
+    flex: 1,
+    flexDirection: 'column'
   }
 
 });
-
-
 export { ItemsList };
