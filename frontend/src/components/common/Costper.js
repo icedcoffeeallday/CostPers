@@ -73,7 +73,8 @@ const styles = ({
     height: 40
   },
   costperContainer: {
-    padding: 20,
+    paddingBottom: 20,
+    paddingLeft: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     // backgroundColor: 'orange',

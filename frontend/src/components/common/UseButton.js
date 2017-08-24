@@ -33,7 +33,9 @@ const styles = ({
   buttonContainer: {
     width: 75,
     height: 20,
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
+    marginRight: 15,
+    marginBottom: 15
   }
 });
 

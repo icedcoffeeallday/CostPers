@@ -3,12 +3,10 @@ import { View, Text } from 'react-native';
 import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
 
 class Item extends Component {
-  
   constructor(props) {
     super(props);
 
     const { user_id, item_id } = props;
-    const itemName = this;
     
     this.state = {
       userId: user_id,
@@ -16,18 +14,18 @@ class Item extends Component {
     };
   }
 
-  detailPress = (() => { 
-      Actions.itemDetails(
-      { userId: this.state.userId,
-        itemId: this.state.itemId })
-  })
-
   render() {
     return (
-        <View style={styles.itemNameContainer}>
+        <View style={styles.itemNameContainer}
+        >
           <Text
             style={styles.itemNameDisplay}
-            >
+            onPress={() =>
+                Actions.itemDetails(
+                  { userId: this.state.userId,
+                    itemId: this.state.itemId }
+                  )}
+          >
             {this.props.name}
           </Text>
         </View>
@@ -37,12 +35,10 @@ class Item extends Component {
 
 const styles = ({
   itemNameDisplay: {
+    minHeight: 65,
     fontSize: 32,
     justifyContent: 'center',
-    color: '#16795B',
-    height: 50,
-    width: 150,
-    backgroundColor: 'yellow'
+    color: '#16795B'
   },
   itemNameContainer: {
     padding: 20
