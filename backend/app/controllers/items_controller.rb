@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
   def index
     @user = User.find_by(id: params[:user_id])
-    @items = @user.items.where(star:false ).sort do |x,y|
+    @items = @user.items.where(star:nil ).sort do |x,y|
       x.cost_per[:costper] <=> y.cost_per[:costper]
     end
 
@@ -24,12 +24,18 @@ class ItemsController < ApplicationController
 
   end
 
+  def show
+    @item = Item.find_by(id: params[:id])
+
+    render json: @item.as_json
+  end
+
   def update
     @item = Item.find_by(id: params[:id])
 
     if @item
       if params[:star] == true
-        @item.star = false
+        @item.star = nil
         @item.save
 
         render json: @item.as_json
