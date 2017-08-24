@@ -43,25 +43,28 @@ class AddItem extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
 
         <TextInput
           label="Name"
           placeholder="bike"
           style={styles.input}
           placeholder="Example: Bike"
-          placeholderTextColor="#6A6B5F"
+          placeholderTextColor="white"
           autoCapitalize="none"
           onChangeText={this.handleName}
         />
+
+
         <TextInput
           label="Price"
           placeholder="Example: $100"
           style={styles.input}
-          placeholderTextColor="#6A6B5F"
+          placeholderTextColor="white"
           onChangeText={this.handlePrice}
         />
-        <TouchableOpacity style={styles.submitButton}>
+
+        <TouchableOpacity style={styles.buttonContainer}>
         <Text
           style={styles.submitButtonText}
           onPress={() => this.insertItem()}
@@ -78,23 +81,41 @@ export default AddItem;
 
 const styles = StyleSheet.create({
    container: {
-      paddingTop: 23
+      paddingTop: 80,
+      backgroundColor: '#16795b',
+      alignItems: 'center',
+      flexGrow: 1,
+      justifyContent: 'flex-start'
    },
    input: {
-      margin: 15,
-      height: 40,
-      borderColor: '#16795B',
-      borderWidth: 1,
-      padding: 10
+     height: 40,
+     width: 300,
+     backgroundColor: 'rgba(225,225,225,0.2)',
+     marginBottom: 10,
+     paddingHorizontal: 10,
+     justifyContent: 'center',
+     color: '#FFF'
    },
    submitButton: {
       backgroundColor: '#16795B',
       padding: 10,
       margin: 15,
       height: 40,
+      width: 300
    },
    submitButtonText: {
-      color: 'white',
-      textAlign: 'center'
+     textAlign: 'center',
+     color: '#FFFFFF',
+     fontWeight: '500',
+     justifyContent: 'center'
+   },
+   buttonContainer: {
+     backgroundColor: '#0e513d',
+     height: 40,
+     width: 300,
+     paddingVertical: 15
+   },
+   inputText: {
+     color: '#FFF'
    }
 });
