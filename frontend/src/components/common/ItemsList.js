@@ -13,13 +13,9 @@ class ItemsList extends Component {
 
   constructor(props) {
     super(props);
-   this.state = { data: [],
-                   name: '',
-                   price: '',
-                   img_url: '',
-                   star: '',
-                   user_id: this.props.userId,
-                   category_id: ''
+    this.state = {starred: [],
+                  non_starred: [],
+                  user_id: this.props.userId,
                  };
     this.updateItemFunc = this.updateItemFunc.bind(this);
   }
@@ -28,7 +24,8 @@ class ItemsList extends Component {
     var myItem = this;
     axios.get('http://localhost:3000/users/'+this.state.user_id+'/items')
       .then(function(response) {
-        myItem.setState({ data: response.data });
+        console.log(response)
+        myItem.setState({starred: response.data.starred, non_starred: response.data.non_starred})
       })
       .catch(function(error) {
         console.log(error)
@@ -50,43 +47,67 @@ class ItemsList extends Component {
 
     sortList() {
       var newList = this.state.data.sort(function(a,b) {
-        return b.costper.costper - a.costper.costper
+        return a.costper.costper - b.costper.costper
       })
       this.setState({ data: newList })
     }
 
     render() {
       return (
-      <View style={styles.container}>
+        <View style={styles.container}>
         <ScrollView>
-            <View >
-            <View style={styles.contentcolumns} >
-            {this.state.data.map((item, index) => {
-              return (
-                <View style={styles.rows}>
-                  <View style={styles.itemInfoContainer}>
+          <View>
+            <Text style={styles.favoriteStyle}> Favorites </Text>
+              <View style={styles.contentcolumns} >
+              {this.state.starred.map((item, index) => {
+                return(
+                  <View style={styles.rows}>
+                    <View style={styles.itemInfoContainer}>
+                    <Item key={item.id}
+                      name={item.name}
+                      price={item.price}
+                      img_url={item.img_url}
+                      star={item.star}
+                      user_id={item.user_id}
+                      category_id={item.category_id}
+                    />
 
+                    <Costper key={item.costper.cpid}
+                      costper={item.costper.costper}
+                      item_id={item.costper.item_id}
+                      updateItem={this.updateItemFunc(index)}
+                    />
+                  </View>
+                  </View>
+                )})}
+            </View>
+
+            <Text style={styles.favoriteStyle}> Everything Else </Text>
+            <View style={styles.contentcolumns} >
+            {this.state.non_starred.map((item, index) => {
+              return(
+                <View style={styles.rows}>
+                <View style={styles.itemInfoContainer}>
                   <Item key={item.id}
                     name={item.name}
                     price={item.price}
                     img_url={item.img_url}
                     star={item.star}
                     user_id={item.user_id}
-                    item_id={item.id}
                     category_id={item.category_id}
                   />
-                  <Costper key={item.costper.id}
-                        costper = {item.costper.costper}
-                        item_id = {item.costper.item_id}
-                        updateItem={this.updateItemFunc(index)}
+                  <Costper key={item.costper.cpid }
+                    costper = {item.costper.costper}
+                    item_id = {item.costper.item_id}
+                    updateItem={this.updateItemFunc(index)}
                   />
-                  </View>
                 </View>
+              </View>
               )})}
           </View>
         </View>
       </ScrollView>
-        <View style={styles.footerStyle}>
+      <View style={styles.footerStyle}>
           <TouchableOpacity onPress={() => Actions.addItem({ userId: this.state.user_id })}>
             <View style={styles.footerSubGroup}>
               <Icon size={40} style={{ color: 'white' }} name="add-circle"/>
@@ -118,7 +139,7 @@ const styles = ({
   footerStyle: {
     height: 60,
     position: 'relative',
-    backgroundColor: "#16795B",
+    backgroundColor: '#16795B',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center'
@@ -130,9 +151,13 @@ const styles = ({
   footerSubGroup: {
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  favoriteStyle: {
+    fontSize: 30,
+    paddingTop: 10,
+    paddingBottom: 5,
+    color: 'gray'
   }
 
 });
-
-
 export { ItemsList };
