@@ -8,8 +8,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const UseButton = ({onPress, children}) => {
 
-  // const buttonToggleColor = toggle?'purple':'gray';
-
   return(
     <View style={styles.buttonContainer}>
       <TouchableOpacity
