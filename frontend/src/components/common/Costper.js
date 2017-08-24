@@ -29,12 +29,10 @@ addUse(arg) {
     .catch(function(response) {
       console.log("broken")
     })
-
   }
 
 
   render() {
-
     return (
       <View>
         <View style={styles.costperContainer}>

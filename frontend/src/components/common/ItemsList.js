@@ -32,8 +32,7 @@ class ItemsList extends Component {
                    user_id: this.props.userId,
                   //  category_id: ''
                  };
-    this.updateItemFunc = this.updateItemFunc.bind(this)
-
+    this.updateItemFunc = this.updateItemFunc.bind(this);
   }
 
   componentWillMount() {
@@ -46,7 +45,7 @@ class ItemsList extends Component {
       .catch(function(error) {
         console.log(error)
       });
-    }
+  }
 
     updateItemFunc(index){
       var thisItemsList = this
@@ -64,7 +63,6 @@ class ItemsList extends Component {
     sortList() {
       var newList = this.state.data.sort(function(a,b) {
         return b.costper.costper - a.costper.costper
-
       })
       this.setState({ data: newList })
     }

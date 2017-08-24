@@ -6,12 +6,14 @@ class Item < ApplicationRecord
 
   def cost_per
      if self.uses.count > 1
-       newcostper = (self.price / self.uses.count).round
+       newcostper = (self.price / self.uses.count).round(2)
      else
-       newcostper = self.price.round
+       newcostper = self.price.round(2)
      end
-     newcostper
+
+     newcostper.round(2)
      { cpid: self.id.to_s + self.name, costper: newcostper, item_id: self.id}
+
    end
 
    def used_times
@@ -22,7 +24,7 @@ class Item < ApplicationRecord
      {
      id: self.id,
      name: self.name,
-     price: self.price.round.to_s,
+     price: self.price.round(2).to_s,
      img_url: self.img_url,
      used_times: self.used_times,
      star: self.star,

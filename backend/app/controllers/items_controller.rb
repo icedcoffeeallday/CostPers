@@ -21,12 +21,7 @@ class ItemsController < ApplicationController
       y.cost_per[:costper] <=> x.cost_per[:costper]
     end
     render json: { non_starred: @items.as_json, starred: @starred.as_json}.to_json
-  end
 
-  def show
-    @item = Item.find_by(id: params[:id])
-
-    render json: @item.as_json
   end
 
 end
