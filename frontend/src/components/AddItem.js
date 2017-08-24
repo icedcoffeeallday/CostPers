@@ -44,7 +44,8 @@ class AddItem extends Component {
   render() {
     return (
       <View style={styles.container}>
-
+        <View>
+        <Text style={styles.fieldLabelText}>Item name</Text>
         <TextInput
           label="Name"
           placeholder="bike"
@@ -52,10 +53,13 @@ class AddItem extends Component {
           placeholder="Example: Bike"
           placeholderTextColor="white"
           autoCapitalize="none"
+          autoCorrect={false}
           onChangeText={this.handleName}
         />
+        </View>
 
-
+        <View>
+        <Text style={styles.fieldLabelText}>Price</Text>
         <TextInput
           label="Price"
           placeholder="Example: $100"
@@ -63,6 +67,7 @@ class AddItem extends Component {
           placeholderTextColor="white"
           onChangeText={this.handlePrice}
         />
+        </View>
 
         <TouchableOpacity style={styles.buttonContainer}>
         <Text
@@ -91,7 +96,7 @@ const styles = StyleSheet.create({
      height: 40,
      width: 300,
      backgroundColor: 'rgba(225,225,225,0.2)',
-     marginBottom: 10,
+     marginBottom: 20,
      paddingHorizontal: 10,
      justifyContent: 'center',
      color: '#FFF'
@@ -113,9 +118,15 @@ const styles = StyleSheet.create({
      backgroundColor: '#0e513d',
      height: 40,
      width: 300,
-     paddingVertical: 15
+     paddingVertical: 15,
+     marginTop: 10
    },
    inputText: {
      color: '#FFF'
+   },
+   fieldLabelText: {
+     color: '#FFF',
+     fontSize: 20,
+     paddingBottom: 7
    }
 });
