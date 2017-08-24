@@ -100,6 +100,7 @@ class App extends Component {
            navigationBarStyle={styles.navBar}
            renderBackButton={()=>(null)}
            hideNavBar={false}
+           titleStyle={styles.navBarTextStyle}
         />
 
         <Scene
@@ -107,6 +108,8 @@ class App extends Component {
             component={AddItem}
             title="Add Item"
             hideNavBar={false}
+            titleStyle={styles.navBarTextStyle}
+            leftButtonIconStyle={styles.navBarIconStyle}
         />
 
         <Scene
@@ -114,6 +117,8 @@ class App extends Component {
             component={ItemDetails}
             title="Item Details"
             hideNavBar={false}
+            titleStyle={styles.navBarTextStyle}
+            leftButtonIconStyle={styles.navBarIconStyle}
         />
         </Scene>
       </Router>
@@ -123,11 +128,18 @@ class App extends Component {
 
 const styles = {
   navBar: {
-    backgroundColor: '#F0F0F0'
+    backgroundColor: '#F0F0F0',
   },
   image: {
     width: 50,
     height: 50
+  },
+  navBarTextStyle: {
+    color: '#16795b',
+    fontSize: 23
+  },
+  navBarIconStyle: {
+    tintColor: '#16795b',
   }
 };
 
