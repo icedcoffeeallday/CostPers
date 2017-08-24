@@ -1,36 +1,21 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Hyperlink } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
 import {Item} from './';
-  // If issues with Item, try adding filename back to from path
 import Costper from './Costper';
 import ContainerSection from '../ContainerSection';
 import LoginForm from '../LoginForm';
 
 
 class ItemsList extends Component {
-  static renderRightButton = ({ iconName, userId }) => {
-    return (
-      <View>
-        <TouchableOpacity onPress={() => Actions.addItem({userId: userId})}>
-          <Icon size={20} style={{ color: 'black' }} name={iconName} />
-        </TouchableOpacity>
-      </View>
-    );
-  }
 
   constructor(props) {
     super(props);
     this.state = {starred: [],
                   non_starred: [],
-                  //  name: '',
-                  //  price: '',
-                  //  img_url: '',
-                  //  star: '',
-                   user_id: this.props.userId,
-                  //  category_id: ''
+                  user_id: this.props.userId,
                  };
     this.updateItemFunc = this.updateItemFunc.bind(this);
   }
@@ -62,19 +47,22 @@ class ItemsList extends Component {
 
     sortList() {
       var newList = this.state.data.sort(function(a,b) {
-        return b.costper.costper - a.costper.costper
+        return a.costper.costper - b.costper.costper
       })
       this.setState({ data: newList })
     }
 
     render() {
       return (
+        <View style={styles.container}>
         <ScrollView>
-            <Text> Favorites </Text>
+          <View>
+            <Text style={styles.favoriteStyle}> Favorites </Text>
               <View style={styles.contentcolumns} >
               {this.state.starred.map((item, index) => {
                 return(
                   <View style={styles.rows}>
+                    <View style={styles.itemInfoContainer}>
                     <Item key={item.id}
                       name={item.name}
                       price={item.price}
@@ -90,15 +78,16 @@ class ItemsList extends Component {
                       updateItem={this.updateItemFunc(index)}
                     />
                   </View>
+                  </View>
                 )})}
             </View>
 
-            <Text> Everything Else </Text>
+            <Text style={styles.favoriteStyle}> Everything Else </Text>
             <View style={styles.contentcolumns} >
             {this.state.non_starred.map((item, index) => {
               return(
                 <View style={styles.rows}>
-
+                <View style={styles.itemInfoContainer}>
                   <Item key={item.id}
                     name={item.name}
                     price={item.price}
@@ -113,9 +102,20 @@ class ItemsList extends Component {
                     updateItem={this.updateItemFunc(index)}
                   />
                 </View>
+              </View>
               )})}
           </View>
+        </View>
       </ScrollView>
+      <View style={styles.footerStyle}>
+          <TouchableOpacity onPress={() => Actions.addItem({ userId: this.state.user_id })}>
+            <View style={styles.footerSubGroup}>
+              <Icon size={40} style={{ color: 'white' }} name="add-circle"/>
+              <Text style={styles.footerTextStyle}>Add Item</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
       );
     }
 }
@@ -125,12 +125,38 @@ const styles = ({
     flex: 1,
   },
   rows: {
-    flexDirection: 'row'
+    flexDirection: 'column',
+    justifyContent: 'space-around'
   },
-
-  contentcolumns: {
-    flex: 1,
-    flexDirection: 'column'
+  itemInfoContainer: {
+    height: 100,
+    justifyContent: 'space-around',
+    borderColor: '#D3D3D3',
+    borderWidth: 0.5,
+    paddingTop: 20,
+    paddingBottom: 10
+  },
+  footerStyle: {
+    height: 60,
+    position: 'relative',
+    backgroundColor: '#16795B',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  footerTextStyle: {
+    color: 'white',
+    fontSize: 13
+  },
+  footerSubGroup: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  favoriteStyle: {
+    fontSize: 30,
+    paddingTop: 10,
+    paddingBottom: 5,
+    color: 'gray'
   }
 
 });
