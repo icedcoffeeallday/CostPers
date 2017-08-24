@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import axios from 'axios';
+import * as Animatable from 'react-native-animatable';
 
 class Star extends Component {
   constructor(props) {
@@ -31,7 +32,14 @@ class Star extends Component {
 
   renderStar() {
     if (this.state.star === true) {
-      return <Text onPress={this.updateStar}>FULL STAR here</Text>;
+      return (<Animatable.Text
+              animation="slideInDown"
+              iterationCount={10}
+              direction="alternate"
+              onPress={this.updateStar}
+              >
+              FULL STAR here
+              </Animatable.Text>);
     }
       return <Text onPress={this.updateStar}>empty star here</Text>;
   }
