@@ -1,4 +1,21 @@
 class ItemsController < ApplicationController
+  def index
+    @user = User.find_by(id: params[:user_id])
+    if @user == nil
+      render json: "you have to be logged in for that!"
+    else
+      @items = @user.items.where(star:false ).sort do |x,y|
+        x.cost_per[:costper] <=> y.cost_per[:costper]
+      end
+
+      @starred = @user.items.where(star:true).sort do |x,y|
+        x.cost_per[:costper] <=> y.cost_per[:costper]
+      end
+      p @starred
+      render json: { non_starred: @items.as_json, starred: @starred.as_json}.to_json
+    end
+  end
+
   def new
   end
 
@@ -11,18 +28,6 @@ class ItemsController < ApplicationController
     render json: @item.as_json
   end
 
-  def index
-    @user = User.find_by(id: params[:user_id])
-    @items = @user.items.where(star:false ).sort do |x,y|
-      x.cost_per[:costper] <=> y.cost_per[:costper]
-    end
-
-    @starred = @user.items.where(star:true).sort do |x,y|
-      x.cost_per[:costper] <=> y.cost_per[:costper]
-    end
-    render json: { non_starred: @items.as_json, starred: @starred.as_json}.to_json
-
-  end
 
   def show
     @item = Item.find_by(id: params[:id])
