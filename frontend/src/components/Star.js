@@ -32,14 +32,11 @@ class Star extends Component {
 
   renderStar() {
     if (this.state.star === true) {
-      return (<Animatable.Text
-              animation="slideInDown"
-              iterationCount={10}
-              direction="alternate"
+      return (<Text
               onPress={this.updateStar}
               >
               FULL STAR here
-              </Animatable.Text>);
+              </Text>);
     }
       return <Text onPress={this.updateStar}>empty star here</Text>;
   }
