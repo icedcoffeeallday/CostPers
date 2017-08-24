@@ -25,7 +25,7 @@ const styles = {
   },
     textStyle: {
       fontSize: 20,
-      color: '#00241B'
+      color: '#16795b'
     }
 };
 
