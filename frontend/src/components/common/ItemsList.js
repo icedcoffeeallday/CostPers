@@ -131,7 +131,7 @@ const styles = ({
     justifyContent: 'space-around'
   },
   itemInfoContainer: {
-    height: 100,
+    height: 120,
     justifyContent: 'space-around',
     borderColor: '#D3D3D3',
     borderWidth: 0.5,

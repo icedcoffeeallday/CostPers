@@ -10,7 +10,8 @@ class Costper extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { costper: this.props.costper }
+    this.state = { costper: this.props.costper,
+                    toggle: false }
     // this.addUse = this.addUse.bind(this)
   }
 
@@ -20,10 +21,8 @@ addUse(arg) {
       item_id: arg
     })
     .then(function(response) {
-      console.log(response)
-      console.log(response.data)
-      myCostper.setState({costper: response.data})
-      console.log(this.state.costper)
+      myCostper.setState({costper: response.data,
+                          toggle: !myCostper.state.toggle})
       myCostper.props.updateItem(response.data)
     })
     .catch(function(response) {
@@ -41,7 +40,10 @@ addUse(arg) {
             <Text style={styles.perUseText}> per use</Text>
           </View>
           <View style={styles.buttonPlacement}>
-            <UseButton onPress={() => this.addUse(this.props.item_id)} />
+            <UseButton
+            onPress={() => this.addUse(this.props.item_id)}
+            toggle={this.state.toggle}
+            />
           </View>
         </View>
       </View>
@@ -53,7 +55,6 @@ const styles = ({
   allText: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    // backgroundColor: 'blue'
   },
   costText: {
     fontSize: 20,
@@ -65,14 +66,13 @@ const styles = ({
   },
   buttonPlacement: {
     flexDirection: 'row',
-    // backgroundColor: 'purple',
     height: 40
   },
   costperContainer: {
-    padding: 20,
+    paddingBottom: 20,
+    paddingLeft: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // backgroundColor: 'orange',
     alignItems: 'flex-end'
   }
 });
