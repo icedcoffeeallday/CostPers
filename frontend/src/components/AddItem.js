@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
 class AddItem extends Component {
@@ -8,8 +9,11 @@ class AddItem extends Component {
     this.state = {
       userId: this.props.userId,
       name: '',
-      price: ''
+      price: '',
+      data: [],
+      error: ''
     };
+    this.insertItem = this.insertItem.bind(this);
   }
 
   handleName = (text) => {
@@ -21,22 +25,26 @@ class AddItem extends Component {
   }
 
   insertItem = () => {
+    var thisItem = this;
     axios.post('http://localhost:3000/users/' + this.state.userId + '/items', {
       name: this.state.name,
       price: this.state.price
     })
     .then(() => {
-      alert('Item has been added!');
+      Actions.itemsList({
+        userId: this.state.userId
+      });
     })
-    .catch(() => {
-
-      alert('There was an issue adding your item.');
-    });
+    .catch(() => this.setState(
+        { error: 'Item not added.'
+      }
+    ));
   }
 
   render() {
     return (
       <View>
+
         <TextInput
           label="Name"
           placeholder="bike"

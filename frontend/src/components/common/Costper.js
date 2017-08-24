@@ -20,18 +20,19 @@ addUse(arg) {
       item_id: arg
     })
     .then(function(response) {
+      console.log(response)
+      console.log(response.data)
       myCostper.setState({costper: response.data})
+      console.log(this.state.costper)
       myCostper.props.updateItem(response.data)
     })
     .catch(function(response) {
       console.log("broken")
     })
-
   }
 
 
   render() {
-
     return (
       <View>
         <View style={styles.costperContainer}>
