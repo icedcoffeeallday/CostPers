@@ -70,15 +70,6 @@ class ItemDetails extends Component {
           </View>
         </View>
 
-        <View style={styles.starContainer}>
-              <Icon
-              name="star-border"
-              size={25}
-              style={{color: 'white'}}
-              />
-              <Text style={styles.starText}> Star this item</Text>
-        </View>
-
         <Card>
           <Star
             userId={this.state.userId}

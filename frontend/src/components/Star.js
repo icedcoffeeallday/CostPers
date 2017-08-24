@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import axios from 'axios';
 import * as Animatable from 'react-native-animatable';
+import Icon from 'react-native-vector-icons/MaterialIcons' ;
 
 class Star extends Component {
   constructor(props) {
@@ -32,13 +33,36 @@ class Star extends Component {
 
   renderStar() {
     if (this.state.star === true) {
-      return (<Text
-              onPress={this.updateStar}
-              >
-              FULL STAR here
-              </Text>);
+      return (
+            <View 
+              style={styles.starContainer}>
+              <Icon
+                name="star"
+                size={25}
+                style={{color: 'white'}}
+              />
+              <Text 
+                style={styles.starText}
+                onPress={this.updateStar}
+                > 
+                Remove favorite</Text>
+            </View>
+            );
     }
-      return <Text onPress={this.updateStar}>empty star here</Text>;
+      return (
+        <View 
+              style={styles.starContainerOff}>
+              <Icon
+                name="star-border"
+                size={25}
+                style={{color: 'white'}}
+              />
+              <Text 
+                style={styles.starText}
+                onPress={this.updateStar}> 
+                Favorite this item </Text>
+            </View>
+        );
   }
 
   render() {
@@ -52,5 +76,36 @@ class Star extends Component {
     );
   }
 }
+
+const styles = ({
+  starContainer: {
+    flexDirection: 'row',
+    marginTop: 30,
+    marginBottom: 30,
+    borderRadius: 10,
+    width: 250,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'orange'
+  },
+  starContainerOff: {
+    flexDirection: 'row',
+    marginTop: 30,
+    marginBottom: 30,
+    borderRadius: 10,
+    width: 250,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgb(255, 202, 58)'
+  },
+  starText: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 18,
+    borderRadius: 5
+  }
+})
 
 export default Star;
