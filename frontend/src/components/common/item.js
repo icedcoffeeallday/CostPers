@@ -6,11 +6,12 @@ class Item extends Component {
   constructor(props) {
     super(props);
 
-    const { user_id, item_id } = props;
-    
+    const { user_id, item_id, star } = props;
+
     this.state = {
       userId: user_id,
-      itemId: item_id
+      itemId: item_id,
+      star: star
     };
   }
 
@@ -22,7 +23,9 @@ class Item extends Component {
             onPress={() =>
             Actions.itemDetails(
               { userId: this.state.userId,
-                itemId: this.state.itemId }
+                itemId: this.state.itemId,
+                star: this.state.star
+               }
               )}
           >
             {this.props.name}

@@ -24,4 +24,29 @@ class ItemsController < ApplicationController
 
   end
 
+  def show
+    @item = Item.find_by(id: params[:id])
+
+    render json: @item.as_json
+  end
+
+  def update
+    @item = Item.find_by(id: params[:id])
+
+    if @item
+      if params[:star] == true
+        @item.star = nil
+        @item.save
+
+        render json: @item.as_json
+      else
+        @item.star = true
+        @item.save
+
+        render json: @item.as_json
+      end
+
+    end
+  end
+
 end
