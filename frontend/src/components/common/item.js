@@ -35,8 +35,9 @@ class Item extends Component {
 
 const styles = ({
   itemNameDisplay: {
-    minHeight: 65,
-    fontSize: 32,
+    minHeight: 80,
+    width: 250,
+    fontSize: 28,
     justifyContent: 'center',
     color: '#16795B'
   },

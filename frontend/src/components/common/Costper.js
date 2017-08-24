@@ -57,7 +57,6 @@ const styles = ({
   allText: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    // backgroundColor: 'blue'
   },
   costText: {
     fontSize: 20,
@@ -69,7 +68,6 @@ const styles = ({
   },
   buttonPlacement: {
     flexDirection: 'row',
-    // backgroundColor: 'purple',
     height: 40
   },
   costperContainer: {
@@ -77,7 +75,6 @@ const styles = ({
     paddingLeft: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // backgroundColor: 'orange',
     alignItems: 'flex-end'
   }
 });
