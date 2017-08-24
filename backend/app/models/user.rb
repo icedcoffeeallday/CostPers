@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :items
-  has_many :uses, through: :items
+  has_many :uses, through: :items, dependent: :destroy
 
   validates :first_name, :last_name, :email, :password, presence: true
 
