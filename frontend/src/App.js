@@ -29,8 +29,10 @@ class App extends Component {
       lastName: '',
       itemId: '',
       auth: false,
+      data: []
     };
     this.authentication = this.authentication.bind(this);
+    // this.addNewItem = this.addNewItem.bind(this);
   }
 
   static renderRightButton(props) {
@@ -68,10 +70,15 @@ class App extends Component {
       ));
   }
 
+  // addNewItem(item) {
+  //   var items = this.state.data;
+  //   items.push(item);
+  //   this.setState({ data: items });
+  // }
+
   render() {
 
     return (
-
       <Router
         sceneStyle={{ paddingTop: 65 }}
       >
@@ -100,7 +107,6 @@ class App extends Component {
             component={AddItem}
             title="Add Item"
             hideNavBar={false}
-
         />
 
         <Scene

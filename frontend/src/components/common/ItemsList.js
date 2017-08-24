@@ -13,7 +13,7 @@ class ItemsList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { data: [],
+   this.state = { data: [],
                    name: '',
                    price: '',
                    img_url: '',
@@ -21,20 +21,19 @@ class ItemsList extends Component {
                    user_id: this.props.userId,
                    category_id: ''
                  };
-    this.updateItemFunc = this.updateItemFunc.bind(this)
-
+    this.updateItemFunc = this.updateItemFunc.bind(this);
   }
 
   componentWillMount() {
     var myItem = this;
     axios.get('http://localhost:3000/users/'+this.state.user_id+'/items')
       .then(function(response) {
-        myItem.setState({data: response.data})
+        myItem.setState({ data: response.data });
       })
       .catch(function(error) {
         console.log(error)
       });
-    }
+  }
 
     updateItemFunc(index){
       var thisItemsList = this
@@ -52,7 +51,6 @@ class ItemsList extends Component {
     sortList() {
       var newList = this.state.data.sort(function(a,b) {
         return b.costper.costper - a.costper.costper
-
       })
       this.setState({ data: newList })
     }
@@ -64,7 +62,7 @@ class ItemsList extends Component {
             <View >
             <View style={styles.contentcolumns} >
             {this.state.data.map((item, index) => {
-              return(
+              return (
                 <View style={styles.rows}>
                   <View style={styles.itemInfoContainer}>
 
