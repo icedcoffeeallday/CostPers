@@ -17,7 +17,8 @@ class Item extends Component {
 
   render() {
     return (
-        <View style={styles.itemNameContainer}>
+        <View style={styles.itemNameContainer}
+        >
           <Text
             style={styles.itemNameDisplay}
             onPress={() =>
@@ -37,7 +38,9 @@ class Item extends Component {
 
 const styles = ({
   itemNameDisplay: {
-    fontSize: 32,
+    minHeight: 80,
+    width: 250,
+    fontSize: 28,
     justifyContent: 'center',
     color: '#16795B'
   },
