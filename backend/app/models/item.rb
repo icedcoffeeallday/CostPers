@@ -10,8 +10,10 @@ class Item < ApplicationRecord
      else
        newcostper = self.price.round(2)
      end
+
      newcostper.round(2)
-     { id: self.id.to_s + self.name, costper: newcostper, item_id: self.id}
+     { cpid: self.id.to_s + self.name, costper: newcostper, item_id: self.id}
+
    end
 
    def used_times
