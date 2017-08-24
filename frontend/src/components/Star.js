@@ -21,7 +21,7 @@ class Star extends Component {
   }
 
   updateStar() {
-    axios.patch('http://localhost:3000/users/' + this.state.userId + '/items/' + this.state.itemId, {
+    axios.patch('https://sheltered-peak-36785.herokuapp.com/users/' + this.state.userId + '/items/' + this.state.itemId, {
       star: this.state.star
     })
     .then((response) => {

@@ -22,7 +22,7 @@ class ItemDetails extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://localhost:3000/users/' + this.state.userId + '/items/' + this.state.itemId)
+    axios.get('https://sheltered-peak-36785.herokuapp.com/users/' + this.state.userId + '/items/' + this.state.itemId)
     .then((response) => {
       this.setState(
         {

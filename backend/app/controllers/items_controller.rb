@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
     if @user == nil
       render json: "you have to be logged in for that!"
     else
-      @items = @user.items.where(star:false ).sort do |x,y|
+      @items = @user.items.where(star:false).sort do |x,y|
         x.cost_per[:costper] <=> y.cost_per[:costper]
       end
 
@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @item = @user.items.new(name: params[:name], price: params[:price])
+    @item = @user.items.new(name: params[:name], price: params[:price], star: false)
     if @item.save
       @item.uses.create
     end
