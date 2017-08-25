@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_many :uses
+  has_many :uses, dependent: :destroy
 
   validates :name, :price, :user_id, presence: true
 
