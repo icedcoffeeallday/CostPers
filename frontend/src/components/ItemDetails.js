@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { Card } from './common';
+import { Actions } from 'react-native-router-flux';
 import Star from './Star';
 import Icon from 'react-native-vector-icons/MaterialIcons' ;
 
 class ItemDetails extends Component {
+
   constructor(props) {
     super(props);
 

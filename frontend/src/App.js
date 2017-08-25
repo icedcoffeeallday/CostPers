@@ -119,6 +119,8 @@ class App extends Component {
             hideNavBar={false}
             titleStyle={styles.navBarTextStyle}
             leftButtonIconStyle={styles.navBarIconStyle}
+            onBack={() => Actions.itemsList(
+            { userId: this.state.userId })}
         />
         </Scene>
       </Router>
