@@ -11,7 +11,8 @@ class ItemDetails extends Component {
   constructor(props) {
     super(props);
 
-    const { userId, itemId, star } = props;
+    const { userId, itemId } = props;
+    let star = this.props.star;
 
     this.state = {
       userId: userId,
@@ -20,7 +21,7 @@ class ItemDetails extends Component {
       uses: '',
       price: '',
       costPer: '',
-      star: ''
+      star: star
     };
   }
 

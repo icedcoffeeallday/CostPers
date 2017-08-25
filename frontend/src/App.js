@@ -120,7 +120,7 @@ class App extends Component {
             titleStyle={styles.navBarTextStyle}
             leftButtonIconStyle={styles.navBarIconStyle}
             onBack={() => Actions.itemsList(
-            { userId: this.state.userId })}
+            { userId: this.state.userId, star: this.state.star })}
         />
         </Scene>
       </Router>
