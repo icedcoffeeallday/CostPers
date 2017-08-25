@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { Card } from './common';
+import { Actions } from 'react-native-router-flux';
 import Star from './Star';
 import Icon from 'react-native-vector-icons/MaterialIcons' ;
 
 class ItemDetails extends Component {
+
   constructor(props) {
     super(props);
 
-    const { userId, itemId, star } = props;
+    const { userId, itemId } = props;
+    let star = this.props.star;
 
     this.state = {
       userId: userId,
@@ -18,7 +21,7 @@ class ItemDetails extends Component {
       uses: '',
       price: '',
       costPer: '',
-      star: ''
+      star: star
     };
   }
 
