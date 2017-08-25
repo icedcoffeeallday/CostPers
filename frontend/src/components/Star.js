@@ -22,7 +22,7 @@ class Star extends Component {
   }
 
   updateStar() {
-    axios.patch('https://sheltered-peak-36785.herokuapp.com/users/' + this.state.userId + '/items/' + this.state.itemId, {
+    axios.patch('http://localhost:3000/users/' + this.state.userId + '/items/' + this.state.itemId, {
       star: this.state.star
     })
     .then((response) => {
@@ -34,32 +34,32 @@ class Star extends Component {
   renderStar() {
     if (this.state.star === true) {
       return (
-            <View 
+            <View
               style={styles.starContainer}>
               <Icon
                 name="star"
                 size={25}
                 style={{color: 'white'}}
               />
-              <Text 
+              <Text
                 style={styles.starText}
                 onPress={this.updateStar}
-                > 
+                >
                 Remove favorite</Text>
             </View>
             );
     }
       return (
-        <View 
+        <View
               style={styles.starContainerOff}>
               <Icon
                 name="star-border"
                 size={25}
                 style={{color: 'white'}}
               />
-              <Text 
+              <Text
                 style={styles.starText}
-                onPress={this.updateStar}> 
+                onPress={this.updateStar}>
                 Favorite this item </Text>
             </View>
         );

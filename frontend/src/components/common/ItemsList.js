@@ -22,7 +22,7 @@ class ItemsList extends Component {
 
   componentWillMount() {
     var myItem = this;
-    axios.get('https://sheltered-peak-36785.herokuapp.com/users/'+this.state.user_id+'/items')
+    axios.get('http://localhost:3000/users/'+this.state.user_id+'/items')
       .then(function(response) {
         console.log(response)
         myItem.setState({starred: response.data.starred, non_starred: response.data.non_starred})
