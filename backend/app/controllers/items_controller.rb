@@ -11,7 +11,6 @@ class ItemsController < ApplicationController
       @starred = @user.items.where(star:true).sort do |x,y|
         x.cost_per[:costper] <=> y.cost_per[:costper]
       end
-      p @starred
       render json: { non_starred: @items.as_json, starred: @starred.as_json}.to_json
     end
   end
