@@ -1,9 +1,7 @@
 # CostPers
-CostPers is an app that halps you better understand the value of your things.
+CostPers is an app that helps you better understand the value of your things. The app keeps track of how much you paid for an item and how many times you've used it - then it calculates the item's real-time "cost per use."
 
-Enter all of your important items and how much you paid for them--then log every time you use the item. 
-
-Before long, you'll learn how much your treasured items cost you "per use". And you'll be able to budget better becuase of it.
+Watch this short demo video to see the app in action:
 
 [![alt text](https://raw.githubusercontent.com/icedcoffeeallday/CostPers/master/CostPers_on_YouTube.png)](https://www.youtube.com/watch?v=fcuIzBc5JEg&feature=youtu.be)
 
