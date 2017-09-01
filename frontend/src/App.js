@@ -70,12 +70,6 @@ class App extends Component {
       ));
   }
 
-  // addNewItem(item) {
-  //   var items = this.state.data;
-  //   items.push(item);
-  //   this.setState({ data: items });
-  // }
-
   render() {
 
     return (
