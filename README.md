@@ -52,20 +52,20 @@ Costpers was created as a final project at Dev Bootcamp, San Francisco.
 * Notifications and Google Maps integration for donating items with high CostPers
 
 ## Test on your local machine
-*iOS and Android preinstall*
+*iOS and Android preinstallation*
 * Clone this repo `git clone https://github.com/icedcoffeeallday/CostPers.git`
 * `cd CostPers/frontend/`
 * Run `npm install` in your command line tool
 * For troubleshooting see: React Native Docs ([running on device](https://facebook.github.io/react-native/docs/running-on-device.html)) for your specific setup
 
-*iOS (macOS)*
+*iOS - macOS*
 * Navigate to `CostPers/frontend/ios/` then open frontend.xcodeproj in Xcode
 * Connect iOS device to your Mac and if necessary register device for development by selecting __Product__ in the Xcode menubar, then desination, and lastly by choosing your device from the list
 * Register for an Apple Developer Account if you don't have one yet
 * In the Xcode Project Navigator, click the "General" tab and in the "Signing" section make sure your Apple developer account or team is selected under the Team dropdown. Repeat this step for the Tests target in your project
 * Press cmd+r to build and run app on local iOS device
 
-*Android (Linux, macOS, Windows)*
+*Android - Linux, macOS, Windows*
 * On Android device first enable the "Developer Options" menu by going to __Settings__ → __About Phone__ then tapping the `Build Number` row at the bottom seven times. Then back in __Settings__ → __Developer Options__ enable "USB Debugging"
 * Plug in the Android device to the development machine via USB, ensure the _singular_ device is properly connecting to ADB by running `adb devices` in command line and verifying `device` is displayed in the right column
 * Type `react-native run-android` in command prompt to install and run the app on the Android device
