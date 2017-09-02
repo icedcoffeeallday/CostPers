@@ -1,8 +1,38 @@
 class Item < ApplicationRecord
   belongs_to :user
-  belongs_to :category
-  has_many :uses
+  has_many :uses, dependent: :destroy
 
   validates :name, :price, :user_id, presence: true
+
+  def cost_per
+     if self.uses.count > 1
+       newcostper = (self.price / self.uses.count).round(2)
+     else
+       newcostper = self.price.round(2)
+     end
+
+     newcostper.round(2)
+     { cpid: self.id.to_s + self.name, costper: newcostper, item_id: self.id}
+
+   end
+
+   def used_times
+     self.uses.count
+   end
+
+   def as_json
+     {
+     id: self.id,
+     name: self.name,
+     price: self.price.round(2).to_s,
+     img_url: self.img_url,
+     used_times: self.used_times,
+     star: self.star,
+     user_id: self.user_id,
+     created_at: self.created_at,
+     updated_at: self.updated_at,
+     costper: self.cost_per
+     }
+   end
 
 end
