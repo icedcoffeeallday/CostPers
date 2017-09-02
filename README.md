@@ -51,7 +51,7 @@ Costpers was created as a final project at Dev Bootcamp, San Francisco.
 * Emoji support :heart:
 * Notifications and Google Maps integration for donating items with high CostPers
 
-## Test on your local machine
+## Install and Test on Local Device
 *iOS and Android preinstallation*
 * Clone this repo `git clone https://github.com/icedcoffeeallday/CostPers.git`
 * `cd CostPers/frontend/`
