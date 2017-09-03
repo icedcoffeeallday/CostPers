@@ -56,7 +56,7 @@ Costpers was created as a final project at Dev Bootcamp, San Francisco.
 * Clone this repo `git clone https://github.com/icedcoffeeallday/CostPers.git`
 * `cd CostPers/frontend/`
 * Run `npm install` in your command line tool
-* For troubleshooting see React Native Docs [running on device](https://facebook.github.io/react-native/docs/running-on-device.html) for your specific setup
+* For troubleshooting see React Native documents [running on device](https://facebook.github.io/react-native/docs/running-on-device.html) for your specific setup
 
 *iOS - macOS*
 * Navigate to `CostPers/frontend/ios/` then open frontend.xcodeproj in Xcode
