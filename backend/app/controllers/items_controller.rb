@@ -1,4 +1,6 @@
-class ItemsController < ApplicationController
+class ItemsController < ApiController
+  before_action :require_login
+
   def index
     @user = User.find_by(id: params[:user_id])
     if @user == nil
