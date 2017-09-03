@@ -1,0 +1,34 @@
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/puma-3.10.0/ext/puma_http11
+/home/tyler/.rvm/rubies/ruby-2.3.3/bin/ruby -r ./siteconf20170902-5465-15hsz3p.rb extconf.rb
+checking for BIO_read() in -lcrypto... yes
+checking for SSL_CTX_new() in -lssl... yes
+checking for openssl/bio.h... yes
+creating Makefile
+
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/puma-3.10.0/ext/puma_http11
+make "DESTDIR=" clean
+
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/puma-3.10.0/ext/puma_http11
+make "DESTDIR="
+compiling mini_ssl.c
+mini_ssl.c: In function ‘engine_init_server’:
+mini_ssl.c:153:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   ID sym_cert = rb_intern("cert");
+   ^
+mini_ssl.c:158:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   ID sym_ca = rb_intern("ca");
+   ^
+mini_ssl.c:180:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   DH *dh = get_dh1024();
+   ^
+mini_ssl.c:184:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   EC_KEY *ecdh = EC_KEY_new_by_curve_name(NID_secp521r1);
+   ^
+compiling puma_http11.c
+compiling http11_parser.c
+compiling io_buffer.c
+linking shared-object puma/puma_http11.so
+
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/puma-3.10.0/ext/puma_http11
+make "DESTDIR=" install
+/usr/bin/install -m 0755 puma_http11.so ./.gem.20170902-5465-1lc29cm/puma

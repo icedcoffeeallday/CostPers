@@ -1,0 +1,15 @@
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+/home/tyler/.rvm/rubies/ruby-2.3.3/bin/ruby -r ./siteconf20170902-5465-1wus542.rb extconf.rb
+creating Makefile
+
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.so
+
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -m 0755 cruby.so ./.gem.20170902-5465-ypwl4f/bindex

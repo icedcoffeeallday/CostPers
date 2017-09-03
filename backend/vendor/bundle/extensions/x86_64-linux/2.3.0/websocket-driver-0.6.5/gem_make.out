@@ -1,0 +1,15 @@
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+/home/tyler/.rvm/rubies/ruby-2.3.3/bin/ruby -r ./siteconf20170902-5465-1kcyi8l.rb extconf.rb
+creating Makefile
+
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/tyler/DevBootcamp/phase3/CostPers/backend/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -m 0755 websocket_mask.so ./.gem.20170902-5465-11laho2
