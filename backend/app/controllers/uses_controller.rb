@@ -1,4 +1,6 @@
 class UsesController < ApplicationController
+  before_action :require_login
+
   def index
     # @item = Item.find_by(params[:id])
     # @uses = @item.uses
