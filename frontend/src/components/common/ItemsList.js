@@ -11,6 +11,15 @@ import LoginForm from '../LoginForm';
 
 class ItemsList extends Component {
 
+  static renderRightButton(props){
+    return <Text
+      style={styles.rightButton}
+      onPress={() => Actions.login()}
+            >
+        Logout
+          </Text>;
+    }
+
   constructor(props) {
     super(props);
     this.state = {starred: [],
@@ -160,6 +169,11 @@ const styles = ({
     paddingBottom: 5,
     color: '#2f4f4f',
     backgroundColor: '#ffef99'
+  },
+  rightButton: {
+    color: '#16795b',
+    fontSize: 16,
+    marginTop: 5
   }
 
 });
