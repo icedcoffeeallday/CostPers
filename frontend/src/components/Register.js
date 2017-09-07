@@ -11,7 +11,9 @@ class Register extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      password: ''
+      password: '',
+      userId: '',
+      loading: false
     };
     this.registerUser = this.registerUser.bind(this);
   }
@@ -23,7 +25,25 @@ class Register extends Component {
         email: this.state.email,
         password: this.state.password
     })
-    .then((response) => { console.log(response); });
+    .then((response) => {
+      this.setState(
+     { userId: response.data.user_id,
+       firstName: response.data.first_name,
+       lastName: response.data.last_name,
+       loading: false,
+       auth: true
+     });
+
+     Actions.itemsList(
+         { userId: this.state.userId
+         }
+       );
+  })
+  .catch(() => this.setState(
+      { error: 'Login failed, please try again.',
+       loading: false
+    }
+    ));
   }
 
   renderButton() {
@@ -38,11 +58,6 @@ class Register extends Component {
   }
 
   render() {
-    console.log('**********************')
-    console.log(this.state.firstName);
-    console.log(this.state.lastName);
-    console.log(this.state.email);
-    console.log(this.state.password);
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
 
