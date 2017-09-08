@@ -8,6 +8,7 @@ User.create!({first_name: "Andrea", last_name: "Scott", email: "andrea@mail.com"
 User.create!({first_name: "Tyler", last_name: "Kawabata", email: "tyler@mail.com", password: "password"})
 User.create!({first_name: "Ginny", last_name: "Fahs", email: "ginny@mail.com", password: "password"})
 User.create!({first_name: "Kevin", last_name: "Cai", email: "kevin@mail.com", password: "password"})
+User.create!({first_name: "Test", last_name: "Tester", email: "test@mail.com", password: "password"})
 
 
 Item.create!({name: "Coloring Book", price: 40, user_id: User.all.sample.id, star: true })
