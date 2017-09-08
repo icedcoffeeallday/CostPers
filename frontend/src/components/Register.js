@@ -4,20 +4,46 @@ import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 import { Button, Card, CardSection, InputField, Spinner, ItemsList, Header } from './common';
 
-class LoginForm extends Component {
-
-  constructor() {
-    super();
+class Register extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
+      firstName: '',
+      lastName: '',
       email: '',
-      password: ''
+      password: '',
+      userId: '',
+      loading: false
     };
-
-    this.loginUser = this.loginUser.bind(this);
+    this.registerUser = this.registerUser.bind(this);
   }
 
-  loginUser() {
-    this.props.authentication(this.state.email, this.state.password);
+  registerUser() {
+    axios.post('https://sheltered-peak-36785.herokuapp.com/register', {
+        first_name: this.state.firstName,
+        last_name: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password
+    })
+    .then((response) => {
+      this.setState(
+     { userId: response.data.user_id,
+       firstName: response.data.first_name,
+       lastName: response.data.last_name,
+       loading: false,
+       auth: true
+     });
+
+     Actions.itemsList(
+         { userId: this.state.userId
+         }
+       );
+  })
+  .catch(() => this.setState(
+      { error: 'Login failed, please try again.',
+       loading: false
+    }
+    ));
   }
 
   renderButton() {
@@ -25,8 +51,8 @@ class LoginForm extends Component {
       return <Spinner size='small' />;
     }
     return (
-      <Button onPress={this.loginUser}>
-        Log in
+      <Button onPress={this.registerUser}>
+        Register
       </Button>
     );
   }
@@ -43,6 +69,30 @@ class LoginForm extends Component {
           <Text style={styles.title}>Understand the value of your things</Text>
 
           <Card>
+          <CardSection>
+          <InputField
+            placeholder="First Name"
+            returnKeyType="next"
+            onSubmitEditing={() => this.passwordInput.focus()}
+            keyboardType="email-address"
+            label="First Name"
+            value={this.state.firstName}
+            onChangeText={firstName => this.setState({ firstName })}
+          />
+          </CardSection>
+
+          <CardSection>
+          <InputField
+            placeholder="Last Name"
+            returnKeyType="next"
+            onSubmitEditing={() => this.passwordInput.focus()}
+            keyboardType="email-address"
+            label="Last Name"
+            value={this.state.lastName}
+            onChangeText={lastName => this.setState({ lastName })}
+          />
+          </CardSection>
+
           <CardSection>
           <InputField
             placeholder="Email"
@@ -69,21 +119,12 @@ class LoginForm extends Component {
           <CardSection>
             {this.renderButton()}
           </CardSection>
+        </Card>
 
-          <CardSection>
-            <Text
-              style={styles.registerStyle}
-              onPress={() => Actions.register()}
-            >
-              Register
-            </Text>
-          </CardSection>
-          </Card>
+      </View>
 
-        </View>
-
-      </KeyboardAvoidingView>
-    );
+    </KeyboardAvoidingView>
+  );
   }
 }
 
@@ -102,19 +143,11 @@ const styles = {
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'flex-start',
-    paddingTop: 120
+    paddingTop: 60
   },
   logo: {
     width: 200,
     height: 150
-  },
-  registerStyle: {
-    color: '#7FFF00',
-    marginTop: 10,
-    marginBottom: 20,
-    textAlign: 'center',
-    textDecorationLine: 'underline',
-    fontFamily: 'ArialHebrew-Bold'
   },
   errorTextStyle: {
     fontSize: 20,
@@ -123,4 +156,4 @@ const styles = {
   }
 };
 
-export default LoginForm;
+export default Register;
