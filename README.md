@@ -44,7 +44,7 @@ Costpers was created as a final project at Dev Bootcamp, San Francisco.
  * Use Add Item footer button to add an item
 
 ## Future Features
-* You love seeing your laptop's CostPer drop, but what about all those subscriptions you have hanging around? Additional configuration for monthly subscriptions is on our list!
+* You love seeing your laptop's CostPer drop, but what about all those subscriptions you have hanging around? Additional configuration for monthly subscriptions is on our list
 * Add item photos
 * Deeper item categorization and analytics
 * Log past uses for an item you already own
@@ -67,6 +67,7 @@ Costpers was created as a final project at Dev Bootcamp, San Francisco.
 * Press cmd+r `(⌘R)` to build and run app on local iOS device
 
 *Android - macOS, Windows*
-* On Android device, first enable the "Developer Options" menu by going to __Settings__ → __About Phone__ then tapping the `Build number` row at the bottom seven times. Then back in __Settings__ → __Developer Options__ enable "USB Debugging"
+* On Android device, first enable the "Developer Options" menu by going to __Settings__ → __About Phone__ then tapping the `Build number` row at the bottom seven times.
+* Then in __Settings__ → __Developer Options__ enable "USB Debugging"
 * Plug in the Android device to the development machine via USB, confirm the _singular_ device is properly connecting to ADB by running `adb devices` in command line and verifying `device` is displayed in the right column
 * Type `react-native run-android` in command prompt to install and run the app on the Android device
