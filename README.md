@@ -56,12 +56,12 @@ Costpers was created as a final project at Dev Bootcamp, San Francisco.
 * Clone this repo `git clone https://github.com/icedcoffeeallday/CostPers.git`
 * `cd CostPers/frontend/`
 * Run `npm install` in your command line tool
-* For troubleshooting see React Native documents [running on device](https://facebook.github.io/react-native/docs/running-on-device.html) for your specific setup
+* For troubleshooting, see React Native documents [running on device](https://facebook.github.io/react-native/docs/running-on-device.html) for your specific setup
 
 *iOS - macOS*
 * Navigate to `CostPers/frontend/ios/` then open `frontend.xcodeproj` in Xcode
 * Connect iOS device to your Mac
-* In Xcode, select __Product__ in the Xcode menubar, then __Destination__, then choose your device from the list
+* In the Xcode menubar, select __Product__, then __Destination__, then choose your device from the list
 * Register for an Apple Developer Account, if you don't have one yet
 * In the Xcode Project Navigator, click the "General" tab and in the "Signing" section make sure your Apple developer account or team is selected under the Team dropdown. Do the same for the Tests target in the project
 * Press cmd+r `(⌘R)` to build and run app on local iOS device
