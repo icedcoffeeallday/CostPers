@@ -15,6 +15,7 @@ import LoginForm from './components/LoginForm';
 import { Scene, Router, Actions, NavBar } from 'react-native-router-flux';
 import MainNavBar from './components/MainNavBar';
 import ItemDetails from './components/ItemDetails';
+import Register from './components/Register';
 
 class App extends Component {
   constructor() {
@@ -86,6 +87,15 @@ class App extends Component {
           sceneStyle={{ paddingTop: 21 }}
           initial
           />
+
+          <Scene
+          key="register"
+          component={Register}
+          // authentication={this.authentication}
+          title="CostPers"
+          hideNavBar={true}
+           sceneStyle={{ paddingTop: 21 }}
+           />
 
         <Scene
            key="itemsList"
