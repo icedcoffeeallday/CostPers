@@ -106,7 +106,7 @@ const styles = {
     paddingTop: 120
   },
   registerStyle: {
-    color: '#7FFF00',
+    color: '#FFEBCD',
     marginTop: 10,
     marginBottom: 20,
     textAlign: 'center',
