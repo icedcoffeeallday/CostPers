@@ -46,7 +46,7 @@ class App extends Component {
   }
 
   authentication(email, password) {
-    axios.post('http://localhost:3000/login', {
+    axios.post('https://radiant-mesa-97290.herokuapp.com/login', {
         email: email,
         password: password
     })

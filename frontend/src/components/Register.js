@@ -19,7 +19,7 @@ import React, { Component } from 'react';
    }
 
    registerUser() {
-     axios.post('http://localhost:3000/register', {
+     axios.post('https://radiant-mesa-97290.herokuapp.com/register', {
          first_name: this.state.firstName,
          last_name: this.state.lastName,
          email: this.state.email,

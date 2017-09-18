@@ -27,7 +27,7 @@ class AddItem extends Component {
 
   insertItem = () => {
     var thisItem = this;
-    axios.post('http://localhost:3000/users/' + this.state.userId + '/items', {
+    axios.post('https://radiant-mesa-97290.herokuapp.com/users/' + this.state.userId + '/items', {
       name: this.state.name,
       price: this.state.price,
     })

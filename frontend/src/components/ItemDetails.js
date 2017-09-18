@@ -27,7 +27,7 @@ class ItemDetails extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://localhost:3000/users/' + this.state.userId + '/items/' + this.state.itemId)
+    axios.get('https://radiant-mesa-97290.herokuapp.com/users/' + this.state.userId + '/items/' + this.state.itemId)
     .then((response) => {
       this.setState(
         {
@@ -44,7 +44,7 @@ class ItemDetails extends Component {
   }
 
   deleteItem() {
-    axios.delete('http://localhost:3000/users/' + this.state.userId + '/items/' + this.state.itemId)
+    axios.delete('https://radiant-mesa-97290.herokuapp.com/users/' + this.state.userId + '/items/' + this.state.itemId)
     .then(() => {
       Actions.itemsList(
         { userId: this.state.userId }
