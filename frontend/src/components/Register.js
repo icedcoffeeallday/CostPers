@@ -117,6 +117,16 @@ import React, { Component } from 'react';
            <CardSection>
              {this.renderButton()}
            </CardSection>
+
+           <CardSection>
+              <Text
+                style={styles.loginStyle}
+                onPress={() => Actions.login()}
+              >
+                Login
+              </Text>
+            </CardSection>
+
          </Card>
 
        </View>
@@ -146,6 +156,14 @@ import React, { Component } from 'react';
    logo: {
      width: 200,
      height: 150
+   },
+   loginStyle: {
+     color: '#FFEBCD',
+     marginTop: 30,
+     marginBottom: 20,
+     textAlign: 'center',
+     textDecorationLine: 'underline',
+     fontFamily: 'ArialHebrew-Bold',
    },
    errorTextStyle: {
      fontSize: 20,
