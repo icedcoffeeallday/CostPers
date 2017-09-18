@@ -11,6 +11,15 @@ import LoginForm from '../LoginForm';
 
 class ItemsList extends Component {
 
+  static renderRightButton(props) {
+    return (<Text
+      style={styles.rightButton}
+      onPress={() => Actions.login()}
+           >
+              Logout
+            </Text>);
+  }
+
   constructor(props) {
     super(props);
     this.state = {starred: [],
@@ -22,13 +31,13 @@ class ItemsList extends Component {
 
   componentWillMount() {
     var myItem = this;
-    axios.get('https://sheltered-peak-36785.herokuapp.com/users/'+this.state.user_id+'/items')
+    axios.get('http://localhost:3000/users/'+this.state.user_id+'/items')
       .then(function(response) {
         console.log(response)
         myItem.setState({starred: response.data.starred, non_starred: response.data.non_starred})
       })
       .catch(function(error) {
-        console.log(error)
+        console.log(error);
       });
   }
 
@@ -160,6 +169,11 @@ const styles = ({
     paddingBottom: 5,
     color: '#2f4f4f',
     backgroundColor: '#ffef99'
+  },
+  rightButton: {
+    color: '#16795b',
+    fontSize: 16,
+    mirginTop: 5
   }
 
 });
