@@ -107,11 +107,11 @@ const styles = {
   },
   registerStyle: {
     color: '#FFEBCD',
-    marginTop: 10,
+    marginTop: 30,
     marginBottom: 20,
     textAlign: 'center',
     textDecorationLine: 'underline',
-    fontFamily: 'ArialHebrew-Bold'
+    fontFamily: 'ArialHebrew-Bold',
   },
   logo: {
     width: 200,
