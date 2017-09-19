@@ -69,6 +69,16 @@ class LoginForm extends Component {
           <CardSection>
             {this.renderButton()}
           </CardSection>
+
+          <CardSection>
+             <Text
+               style={styles.registerStyle}
+               onPress={() => Actions.register()}
+             >
+               Register
+             </Text>
+           </CardSection>
+
           </Card>
 
         </View>
@@ -94,6 +104,14 @@ const styles = {
     flexGrow: 1,
     justifyContent: 'flex-start',
     paddingTop: 120
+  },
+  registerStyle: {
+    color: '#FFEBCD',
+    marginTop: 30,
+    marginBottom: 20,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    fontFamily: 'ArialHebrew-Bold',
   },
   logo: {
     width: 200,

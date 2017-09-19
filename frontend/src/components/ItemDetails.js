@@ -23,10 +23,11 @@ class ItemDetails extends Component {
       costPer: '',
       star: star
     };
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   componentWillMount() {
-    axios.get('https://sheltered-peak-36785.herokuapp.com/users/' + this.state.userId + '/items/' + this.state.itemId)
+    axios.get('https://radiant-mesa-97290.herokuapp.com/users/' + this.state.userId + '/items/' + this.state.itemId)
     .then((response) => {
       this.setState(
         {
@@ -40,7 +41,17 @@ class ItemDetails extends Component {
       console.log(response);
     })
     .catch((error) => console.log(error));
-  };
+  }
+
+  deleteItem() {
+    axios.delete('https://radiant-mesa-97290.herokuapp.com/users/' + this.state.userId + '/items/' + this.state.itemId)
+    .then(() => {
+      Actions.itemsList(
+        { userId: this.state.userId }
+      );
+    })
+    .catch((error) => console.log(error));
+  }
 
   // const toggleStar=toggle?"star":"star-border";
 
@@ -81,6 +92,12 @@ class ItemDetails extends Component {
           />
         </Card>
 
+        <Text
+          style={styles.deleteItem}
+          onPress={this.deleteItem}
+        >
+          Delete This Item
+        </Text>
       </View>
     );
   }
@@ -94,8 +111,8 @@ const styles= ({
   itemNameContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
-    height: 200,
+    marginTop: 10,
+    height: 150,
     width: 300
   },
   itemNameText: {
@@ -203,7 +220,12 @@ const styles= ({
     color: 'white',
     fontSize: 18,
     borderRadius: 5
+  },
+  deleteItem: {
+    color: 'red',
+    fontSize: 15,
+    textDecorationLine: 'underline'
   }
-})
+});
 
 export default ItemDetails;

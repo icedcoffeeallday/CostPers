@@ -16,7 +16,7 @@ class Costper extends Component {
 
 addUse(arg) {
   var myCostper = this
-    axios.post("https://sheltered-peak-36785.herokuapp.com/items/"+arg+"/uses", {
+    axios.post("https://radiant-mesa-97290.herokuapp.com/items/"+arg+"/uses", {
       item_id: arg
     })
     .then(function(response) {
